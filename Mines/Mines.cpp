@@ -3,19 +3,19 @@
 
 #include "pch.h"
 #include <iostream>
-
+#include "MinesweeperBoard.h"
+#include <time.h> 
+#include <conio.h>
+#include "AdditionalFunctions.h"
+using namespace std;
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	//const int UP = 72, DOWN = 80, ENTER = 13, LEFT = 75, RIGHT = 77;
+
+	srand(time(NULL));
+	MinesweeperBoard minesweeperBoard(10, 10);
+	AdditionalFunctions af(minesweeperBoard);
+	//minesweeperBoard.debug_display();
+	af.move();
+
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

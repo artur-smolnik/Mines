@@ -151,10 +151,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdditionalFunctions.h" />
+    <ClInclude Include="MinesweeperBoard.h" />
+    <ClInclude Include="MSBoardTextView.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdditionalFunctions.cpp" />
     <ClCompile Include="Mines.cpp" />
+    <ClCompile Include="MinesweeperBoard.cpp" />
+    <ClCompile Include="MSBoardTextView.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
