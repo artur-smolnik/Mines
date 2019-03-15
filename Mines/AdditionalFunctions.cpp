@@ -79,40 +79,63 @@ void AdditionalFunctions::move()
 	{
 		znak = _getch();
 
-		while (_kbhit())
+		if (znak == 'f')
+		{	
+			if (!(minesweeperBoard.isRevealed(x, y) && minesweeperBoard.hasFlag(x, y)))
+			{
+				minesweeperBoard.toggleFlag(x, y);
+				system("CLS");
+				debug_display_move(x, y);
+				minesweeperBoard.display_info(x, y);
+			}
+		}
+		else if (znak == 'r')
 		{
-			znak = _getch();
-			switch (static_cast <int>(znak)) {
-			case 72:
-				if (y - 1 < 0)y = minesweeperBoard.getBoardHeight() - 1;
-				else y = y - 1;
-				system("CLS");
-				debug_display_move(x, y);
-				minesweeperBoard.display_info(x, y);
-				break;
-			case 80:
-				if (y + 1 >= minesweeperBoard.getBoardHeight()) y = 0;
-				else y = y + 1;
-				system("CLS");
-				debug_display_move(x, y);
-				minesweeperBoard.display_info(x, y);
-				break;
-			case 75:
-				if (x - 1 < 0)x = minesweeperBoard.getBoardWidth() - 1;
-				else x = x - 1;
-				system("CLS");
-				debug_display_move(x, y);
-				minesweeperBoard.display_info(x, y);
-				break;
-			case 77:
-				if (x + 1 >= minesweeperBoard.getBoardWidth())x = 0;
-				else x = x + 1;
-				system("CLS");
-				debug_display_move(x, y);
-				minesweeperBoard.display_info(x, y);
-				break;
-			default:
-				continue;
+			minesweeperBoard.revealField(x, y);
+			system("CLS");
+			debug_display_move(x, y);
+			minesweeperBoard.display_info(x, y);
+
+		}
+		else
+		{
+
+
+			while (_kbhit())
+			{
+				znak = _getch();
+				switch (static_cast <int>(znak)) {
+				case 72:
+					if (y - 1 < 0)y = minesweeperBoard.getBoardHeight() - 1;
+					else y = y - 1;
+					system("CLS");
+					debug_display_move(x, y);
+					minesweeperBoard.display_info(x, y);
+					break;
+				case 80:
+					if (y + 1 >= minesweeperBoard.getBoardHeight()) y = 0;
+					else y = y + 1;
+					system("CLS");
+					debug_display_move(x, y);
+					minesweeperBoard.display_info(x, y);
+					break;
+				case 75:
+					if (x - 1 < 0)x = minesweeperBoard.getBoardWidth() - 1;
+					else x = x - 1;
+					system("CLS");
+					debug_display_move(x, y);
+					minesweeperBoard.display_info(x, y);
+					break;
+				case 77:
+					if (x + 1 >= minesweeperBoard.getBoardWidth())x = 0;
+					else x = x + 1;
+					system("CLS");
+					debug_display_move(x, y);
+					minesweeperBoard.display_info(x, y);
+					break;
+				default:
+					continue;
+				}
 			}
 		}
 	} while (znak != 27); //ESC

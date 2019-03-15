@@ -19,8 +19,8 @@ class MinesweeperBoard
 	void setBoard();
 	void setMines(GameMode gameMode);
 	
-	void toggleFlag(int x, int y);
-	void revealField(int x, int y);
+	
+	
 	
 //	private
 public:
@@ -30,6 +30,9 @@ public:
 	int countMines(int x, int y) const;			
 	void debug_display() const;
 	void display_info(int x, int y);
+	void toggleFlag(int x, int y);
+	void revealField(int x, int y);
+
 	char getFieldInfo(int x, int y) const;
 	bool hasFlag(int x, int y) const;
 	bool hasMine(int x, int y) const;
