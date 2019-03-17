@@ -18,6 +18,8 @@ class MinesweeperBoard
 	Field board[100][100];
 	void setBoard();
 	void setMines(GameMode gameMode);
+
+	char* info;
 	
 	
 	
@@ -33,7 +35,7 @@ public:
 	void toggleFlag(int x, int y);
 	void revealField(int x, int y);
 
-	char getFieldInfo(int x, int y) const;
+	char* getFieldInfo(int x, int y) const;
 	bool hasFlag(int x, int y) const;
 	bool hasMine(int x, int y) const;
 	bool isRevealed(int x, int y) const;

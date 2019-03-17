@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include "MinesweeperBoard.h"
+#include <string>
 
 #ifndef MINESBOARD_H__
 #define MINESBOARD_H__
@@ -10,12 +11,12 @@
 
 using namespace std;
 MinesweeperBoard::MinesweeperBoard(int width, int height) {
-	
+	info = new char[6];
 	this->width = width;
 	this->height = height;
 	setBoard();
 	gameState = MinesweeperBoard::RUNNING;
-	difficultyLevel = MinesweeperBoard::HARD;
+	difficultyLevel = MinesweeperBoard::DEBUG;
 	setMines(difficultyLevel);
 	toggleFlag(5, 5);
 }
@@ -94,33 +95,23 @@ void MinesweeperBoard::setMines(GameMode gameMode) {
 
 
 
-char MinesweeperBoard::getFieldInfo(int x, int y) const
+char* MinesweeperBoard::getFieldInfo(int x, int y) const
 {
-	if (x < 0 || x >= width || y < 0 || y >= height) 
-	{
-		return '#';
-	}
-	else if (board[x][y].hasFlag)
-	{
-		return 'F';
-	}
-	else if (!(board[x][y].isRevealed && board[x][y].hasMine))
-	{
-		return '_';
-	}
-	else if(board[x][y].isRevealed && board[x][y].hasMine)
-	{
-		return 'x';
-	}
-	else if (board[x][y].isRevealed && countMines(x,y)==0)
-	{
-		return ' ';
-	}
-	else if (board[x][y].isRevealed && countMines(x, y) != 0)
-	{
-		return countMines(x, y);
-	}
-	return 0;
+	
+	if (x < 0 || x >= width || y < 0 || y >= height) info[0] = '#';	
+	else info[0] = '*';
+	if (board[x][y].hasFlag)info[1] = 'F';
+	else info[0] = '*';
+	if (!(board[x][y].isRevealed && board[x][y].hasMine)) info[2] = '_';
+	else info[2] = '*';
+	if(board[x][y].isRevealed && board[x][y].hasMine) info[3] = 'x';
+	else info[3] = '*';
+	if (board[x][y].isRevealed && countMines(x,y)==0) info[4]= ' ';
+	else info[4] = '*';
+	if (board[x][y].isRevealed && countMines(x, y) != 0) info[5] = static_cast<char>(countMines(x, y));
+	else info[5] = '0';	
+	
+	return info;
 }
 
 

@@ -16,8 +16,13 @@ int main()
 	MinesweeperBoard minesweeperBoard(10, 10);
 	AdditionalFunctions af(minesweeperBoard);
 	//minesweeperBoard.debug_display();
-	af.move();
+	//af.move();
 
+	char* tmp = minesweeperBoard.getFieldInfo(1,1);
+	for (int i = 0; i < 6; i++)
+	{
+		cout << *(tmp + i);
+	}
 	//check for version control
 
 }
