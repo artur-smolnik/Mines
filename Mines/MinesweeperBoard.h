@@ -28,8 +28,8 @@ class MinesweeperBoard
 	void setMinesCords();
 	void setMinesCords(int x, int y);
 	void setBoard();
-	void setMines(int minesAmount);
-	void setMinesAmount(GameMode gameMode);	
+	void setMines();
+	void setMinesAmount();	
 	
 
 public:

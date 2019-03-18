@@ -16,8 +16,9 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode ) {
 	this->gameState = RUNNING;
 	this->gameMode = mode;
 	setBoard();
-	setMinesAmount(gameMode);
-	setMines(gameMode);	
+	setMinesAmount();
+	setMinesCords();
+	setMines();	
 	info = new char[6];
 
 }
@@ -27,7 +28,7 @@ MinesweeperBoard::MinesweeperBoard()
 }
 
 
-void MinesweeperBoard::setMinesCords()
+void MinesweeperBoard::setMinesCords()  //fills vector of cords with new coordinates
 {
 	int cordX, cordY;
 	for (int i = 0; i < minesAmount; i++)
@@ -45,7 +46,7 @@ void MinesweeperBoard::setMinesCords()
 	}
 }
 
-void MinesweeperBoard::setMinesCords(int x, int y)
+void MinesweeperBoard::setMinesCords(int x, int y)  // used in reveal info while during first turn user picks a field with a mine 
 {
 	int cordY, cordX, tmpX, tmpY;
 	do {
@@ -73,7 +74,7 @@ void MinesweeperBoard::setMinesCords(int x, int y)
 }
 
 
-void MinesweeperBoard::setMines(int minesAmount) {
+void MinesweeperBoard::setMines() {  // makes hasMine true according to the vector cords data
 	
 	if (gameMode != DEBUG)
 	{
@@ -102,7 +103,7 @@ void MinesweeperBoard::setMines(int minesAmount) {
 }
 
 
-void MinesweeperBoard::setBoard()
+void MinesweeperBoard::setBoard()  // fills board with all fields' members set to false
 {
 	for (int i = 0; i < height; i++)
 	{
@@ -117,7 +118,7 @@ void MinesweeperBoard::setBoard()
 
 
 
-void MinesweeperBoard::setMinesAmount(GameMode gameMode)
+void MinesweeperBoard::setMinesAmount()  // evaluates number of traps in our game
 {
 	if (gameMode != DEBUG)
 	{
@@ -162,11 +163,6 @@ char* MinesweeperBoard::getFieldInfo(int x, int y) const
 }
 
 
-
-void MinesweeperBoard::display_mines_around(int x, int y)
-{
-	cout <<"Mines around: " << countMines(x, y) << endl;
-}
 
 
 
@@ -231,10 +227,11 @@ void MinesweeperBoard::revealField(int x, int y)
 						if(board[j][i].isRevealed) checkIfRevealed++;
 					}
 				}
-				if (checkIfRevealed == 0)
-				{
+				//if (checkIfRevealed == 0)
+				//{
 					setMinesCords(x, y);
-				}
+					setMines();
+				//}
 			}
 			else
 			{

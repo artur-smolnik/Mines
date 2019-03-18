@@ -13,7 +13,7 @@ int main()
 	//const int UP = 72, DOWN = 80, ENTER = 13, LEFT = 75, RIGHT = 77;
 
 	srand(time(NULL));
-	MinesweeperBoard minesweeperBoard(10, 10, GameMode::DEBUG);
+	MinesweeperBoard minesweeperBoard(10, 10, GameMode::HARD);
 	AdditionalFunctions af(minesweeperBoard);
 	//minesweeperBoard.debug_display();
 	af.move();

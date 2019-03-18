@@ -74,7 +74,7 @@ void AdditionalFunctions::move()
 	unsigned char znak;
 	int x = 0, y = 0;
 	minesweeperBoard.debug_display();
-	minesweeperBoard.display_mines_around(x, y);
+	display_mines_around(x, y);
 	do
 	{
 		znak = _getch();
@@ -86,7 +86,7 @@ void AdditionalFunctions::move()
 				minesweeperBoard.toggleFlag(x, y);
 				system("CLS");
 				debug_display_move(x, y);
-				minesweeperBoard.display_mines_around(x, y);
+				display_mines_around(x, y);
 			}
 		}
 		else if (znak == 'r')
@@ -94,7 +94,7 @@ void AdditionalFunctions::move()
 			minesweeperBoard.revealField(x, y);
 			system("CLS");
 			debug_display_move(x, y);
-			minesweeperBoard.display_mines_around(x, y);
+			display_mines_around(x, y);
 
 		}
 		else
@@ -110,28 +110,28 @@ void AdditionalFunctions::move()
 					else y = y - 1;
 					system("CLS");
 					debug_display_move(x, y);
-					minesweeperBoard.display_mines_around(x, y);
+					display_mines_around(x, y);
 					break;
 				case 80:
 					if (y + 1 >= minesweeperBoard.getBoardHeight()) y = 0;
 					else y = y + 1;
 					system("CLS");
 					debug_display_move(x, y);
-					minesweeperBoard.display_mines_around(x, y);
+					display_mines_around(x, y);
 					break;
 				case 75:
 					if (x - 1 < 0)x = minesweeperBoard.getBoardWidth() - 1;
 					else x = x - 1;
 					system("CLS");
 					debug_display_move(x, y);
-					minesweeperBoard.display_mines_around(x, y);
+					display_mines_around(x, y);
 					break;
 				case 77:
 					if (x + 1 >= minesweeperBoard.getBoardWidth())x = 0;
 					else x = x + 1;
 					system("CLS");
 					debug_display_move(x, y);
-					minesweeperBoard.display_mines_around(x, y);
+					display_mines_around(x, y);
 					break;
 				default:
 					continue;
@@ -139,4 +139,11 @@ void AdditionalFunctions::move()
 			}
 		}
 	} while (znak != 27); //ESC
+}
+
+
+
+void AdditionalFunctions::display_mines_around(int x, int y)
+{
+	cout << "Mines around: " << minesweeperBoard.countMines(x, y) << endl;
 }
