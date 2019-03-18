@@ -3,22 +3,23 @@
 #include <conio.h>
 #include <stdlib.h>
 #include "MinesweeperBoard.h"
-#include <string>
+
 
 #ifndef MINESBOARD_H__
 #define MINESBOARD_H__
 
 
 using namespace std;
-MinesweeperBoard::MinesweeperBoard(int width, int height) {
-	info = new char[6];
+MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode ) {
 	this->width = width;
 	this->height = height;
+	this->gameState = RUNNING;
+	this->gameMode = mode;
 	setBoard();
-	gameState = MinesweeperBoard::RUNNING;
-	difficultyLevel = MinesweeperBoard::DEBUG;
-	setMines(difficultyLevel);
-	toggleFlag(5, 5);
+	setMinesAmount(gameMode);
+	setMines(gameMode);	
+	info = new char[6];
+
 }
 
 MinesweeperBoard::MinesweeperBoard()
@@ -26,50 +27,59 @@ MinesweeperBoard::MinesweeperBoard()
 }
 
 
-void MinesweeperBoard::setBoard()
+void MinesweeperBoard::setMinesCords()
 {
-	for (int i = 0; i < height; i++)
+	int cordX, cordY;
+	for (int i = 0; i < minesAmount; i++)
 	{
-		for (int j = 0; j < width; j++)
+		do
 		{
-			board[j][i].hasMine = false;
-			board[j][i].isRevealed = false;
-			board[j][i].hasFlag = false;
-		}
+			cordX = rand() % width;
+			cordY = rand() % height;
+		} while (board[cordX][cordY].hasMine);
+
+		mineCords tmp;
+		tmp.x = cordX;
+		tmp.y = cordY;
+		minesCords.push_back(tmp);		
 	}
 }
 
-
-
-void MinesweeperBoard::setMines(GameMode gameMode) {
-	int minesAmount, cordX, cordY;
-	
-	if (gameMode != MinesweeperBoard::DEBUG) 
-	{
-		switch (gameMode)
-		{
-		case MinesweeperBoard::EASY:
-			minesAmount = (width*height) / 10;
-			break;
-		case MinesweeperBoard::NORMAL:
-			minesAmount = (width*height) / 5;
-			break;
-		case MinesweeperBoard::HARD:
-			minesAmount = (width*height) / 3;
-			break;
-		default:
-			break;
-		}
-
+void MinesweeperBoard::setMinesCords(int x, int y)
+{
+	int cordY, cordX, tmpX, tmpY;
+	do {
+		tmpX = 0;
+		tmpY = 0;
+		cordX = rand() % width;
+		cordY = rand() % height;
 		for (int i = 0; i < minesAmount; i++)
 		{
-			do
-			{
-				cordX = rand() % width;
-				cordY = rand() % height;
-			} while (board[cordX][ cordY].hasMine);
+			if (cordX == minesCords[i].x && tmpX == 0) tmpX++;
+			if (cordY == minesCords[i].y && tmpY == 0) tmpY++;
+		}
+	} while (tmpX != 0 && tmpY !=0);
 
-			board[cordX][cordY].hasMine = true;
+	for (int i = 0; i < minesAmount; i++)
+	{
+		if (minesCords[i].x == x && minesCords[i].y == y)
+		{
+			minesCords[i].x = cordX;
+			minesCords[i].y = cordY;
+		}
+	}
+	// Deletes the second element (vec[1])
+	//vec.erase(vec.begin() + 1);
+}
+
+
+void MinesweeperBoard::setMines(int minesAmount) {
+	
+	if (gameMode != DEBUG)
+	{
+		for (int i = 0; i < minesAmount; i++)
+		{
+			board[minesCords[i].x][minesCords[i].y].hasMine = true;
 		}
 	}
 	else
@@ -88,7 +98,44 @@ void MinesweeperBoard::setMines(GameMode gameMode) {
 			board[i][i].hasMine = true;
 		}
 	}
-	
+
+}
+
+
+void MinesweeperBoard::setBoard()
+{
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			board[j][i].hasMine = false;
+			board[j][i].isRevealed = false;
+			board[j][i].hasFlag = false;
+		}
+	}
+}
+
+
+
+void MinesweeperBoard::setMinesAmount(GameMode gameMode)
+{
+	if (gameMode != DEBUG)
+	{
+		switch (gameMode)
+		{
+		case EASY:
+			minesAmount = (width*height) / 10;
+			break;
+		case NORMAL:
+			minesAmount = (width*height) / 5;
+			break;
+		case HARD:
+			minesAmount = (width*height) / 3;
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 
@@ -116,7 +163,7 @@ char* MinesweeperBoard::getFieldInfo(int x, int y) const
 
 
 
-void MinesweeperBoard::display_info(int x, int y)
+void MinesweeperBoard::display_mines_around(int x, int y)
 {
 	cout <<"Mines around: " << countMines(x, y) << endl;
 }
@@ -126,12 +173,11 @@ void MinesweeperBoard::display_info(int x, int y)
 
 void MinesweeperBoard::toggleFlag(int x, int y)
 {
-	if (!(x < 0 || x >= width || y < 0 || y >= height))
+	if (!(x < 0 || x >= width || y < 0 || y >= height) && gameState==RUNNING)
 	{
-		if (board[x][y].isRevealed == false)board[x][y].hasFlag = true;
+		if (board[x][y].isRevealed == false && board[x][y].hasFlag == false) board[x][y].hasFlag = true;
 	}
 }
-
 
 
 
@@ -173,15 +219,36 @@ void MinesweeperBoard::revealField(int x, int y)
 {   
 	if (!(x < 0 || x >= width || y < 0 || y >= height))
 	{
-		if (!(board[x][y].isRevealed || gameState == FINISHED_LOSS || gameState == FINISHED_WIN || board[x][y].hasFlag == true)) board[x][y].isRevealed = true;
+		if (!(board[x][y].isRevealed || gameState != RUNNING || board[x][y].hasFlag == true))
+		{
+			if (board[x][y].hasMine)
+			{
+				int checkIfRevealed = 0;
+				for (int i = 0; i < height; i++)
+				{
+					for (int j = 0; j < width; j++)
+					{
+						if(board[j][i].isRevealed) checkIfRevealed++;
+					}
+				}
+				if (checkIfRevealed == 0)
+				{
+					setMinesCords(x, y);
+				}
+			}
+			else
+			{
+				board[x][y].isRevealed = true;
+			}
+		}
 	}
 }
 
 
 
 
-int MinesweeperBoard::countMines(int x, int y)const 
-{
+int MinesweeperBoard::countMines(int x, int y) const 
+{	
 	int minesAmount = 0;
 	if (board[x][y].isRevealed)return -1;
 	if (x < 0 || x >= width || y < 0 || y >= height) return -1;
@@ -251,6 +318,8 @@ void MinesweeperBoard::debug_display() const
 int MinesweeperBoard::getBoardWidth() const {return width;}
 
 int MinesweeperBoard::getBoardHeight() const { return height; }
+
+int MinesweeperBoard::getMineCount() const { return minesAmount; }
 
 
 #endif

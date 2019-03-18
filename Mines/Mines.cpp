@@ -13,16 +13,11 @@ int main()
 	//const int UP = 72, DOWN = 80, ENTER = 13, LEFT = 75, RIGHT = 77;
 
 	srand(time(NULL));
-	MinesweeperBoard minesweeperBoard(10, 10);
+	MinesweeperBoard minesweeperBoard(10, 10, GameMode::DEBUG);
 	AdditionalFunctions af(minesweeperBoard);
 	//minesweeperBoard.debug_display();
-	//af.move();
+	af.move();
 
-	char* tmp = minesweeperBoard.getFieldInfo(1,1);
-	for (int i = 0; i < 6; i++)
-	{
-		cout << *(tmp + i);
-	}
-	//check for version control
+	
 
 }
