@@ -22,11 +22,12 @@ class MinesweeperBoard
 	GameMode gameMode;
 	GameState gameState;
 	int width, height, minesAmount;
+	bool firstMove;
 	Field board[100][100];
 	char* info;
 	std::vector<mineCords> minesCords;
 	void setMinesCords();
-	void setMinesCords(int x, int y);
+	void setMinesCordsFirstMove(int x, int y);
 	void setBoard();
 	void setMines();
 	void setMinesAmount();	

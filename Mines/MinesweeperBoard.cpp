@@ -15,6 +15,7 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode ) {
 	this->height = height;
 	this->gameState = RUNNING;
 	this->gameMode = mode;
+	this->firstMove = true;
 	setBoard();
 	setMinesAmount();
 	setMinesCords();
@@ -46,7 +47,7 @@ void MinesweeperBoard::setMinesCords()  //fills vector of cords with new coordin
 	}
 }
 
-void MinesweeperBoard::setMinesCords(int x, int y)  // used in reveal info while during first turn user picks a field with a mine 
+void MinesweeperBoard::setMinesCordsFirstMove(int x, int y)  // used in revealField while during first turn user picks a field with a mine 
 {
 	int cordY, cordX, tmpX, tmpY;
 	do {
@@ -213,32 +214,20 @@ bool MinesweeperBoard::isRevealed(int x, int y) const
 
 void MinesweeperBoard::revealField(int x, int y)
 {   
-	if (!(x < 0 || x >= width || y < 0 || y >= height))
+	if (x < 0 || x >= width || y < 0 || y >= height) return;
+	
+	if (board[x][y].isRevealed || gameState != RUNNING || board[x][y].hasFlag) return;
+		
+	if (board[x][y].hasMine && firstMove)
 	{
-		if (!(board[x][y].isRevealed || gameState != RUNNING || board[x][y].hasFlag == true))
-		{
-			if (board[x][y].hasMine)
-			{
-				int checkIfRevealed = 0;
-				for (int i = 0; i < height; i++)
-				{
-					for (int j = 0; j < width; j++)
-					{
-						if(board[j][i].isRevealed) checkIfRevealed++;
-					}
-				}
-				//if (checkIfRevealed == 0)
-				//{
-					setMinesCords(x, y);
-					setMines();
-				//}
-			}
-			else
-			{
-				board[x][y].isRevealed = true;
-			}
-		}
+		setMinesCordsFirstMove(x, y);
+		setMines();		
+		firstMove = false;
 	}
+	else
+	{
+		board[x][y].isRevealed = true;
+	}	
 }
 
 
