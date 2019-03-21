@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
 class Rectangle
 {
@@ -11,5 +12,5 @@ public:
 	void draw(sf::RenderWindow & window);
 };
 
-};
+
 
