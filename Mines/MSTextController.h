@@ -9,7 +9,7 @@ class MSTextController
 
 public:
 	MSTextController();
-	MSTextController(MinesweeperBoard msb, MSBoardTextView msbtv);
+	MSTextController(MinesweeperBoard &msb, MSBoardTextView &msbtv);
 	void move();
 
 	

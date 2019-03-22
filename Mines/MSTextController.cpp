@@ -8,7 +8,7 @@ MSTextController::MSTextController()
 }
 
 
-MSTextController::MSTextController(MinesweeperBoard msb, MSBoardTextView msbtv)
+MSTextController::MSTextController(MinesweeperBoard &msb, MSBoardTextView &msbtv)
 {
 	this->msbtv = msbtv;
 	this->minesweeperBoard = msb;

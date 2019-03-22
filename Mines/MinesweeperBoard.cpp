@@ -48,29 +48,28 @@ void MinesweeperBoard::setMinesCords()  //fills vector of cords with new coordin
 
 void MinesweeperBoard::setMinesCordsFirstMove(int x, int y)  // used in revealField while during first turn user picks a field with a mine 
 {
-	int cordY, cordX, tmpX, tmpY;
+	int cordY, cordX, tmp;
 	do {
-		tmpX = 0;
-		tmpY = 0;
+		tmp = 0;
 		cordX = rand() % width;
 		cordY = rand() % height;
 		for (int i = 0; i < minesAmount; i++)
 		{
-			if (cordX == minesCords[i].x && tmpX == 0) tmpX++;
-			if (cordY == minesCords[i].y && tmpY == 0) tmpY++;
+			if (cordX == minesCords[i].x && cordY == minesCords[i].y) tmp++;		
 		}
-	} while (tmpX != 0 && tmpY !=0);
+	} while (tmp != 0);
 
 	for (int i = 0; i < minesAmount; i++)
 	{
 		if (minesCords[i].x == x && minesCords[i].y == y)
 		{
+			board[x][y].hasMine = false;
+			board[cordX][cordY].hasMine = true;
 			minesCords[i].x = cordX;
-			minesCords[i].y = cordY;
+			minesCords[i].y = cordY;			
+			break;
 		}
 	}
-	// Deletes the second element (vec[1])
-	//vec.erase(vec.begin() + 1);
 }
 
 
@@ -196,19 +195,11 @@ bool MinesweeperBoard::hasMine(int x, int y) const
 }
 
 
-
-
-
-
 bool MinesweeperBoard::isRevealed(int x, int y) const
 {
 	if (!(x < 0 || x >= width || y < 0 || y >= height))
 		return board[x][y].isRevealed;
 }
-
-
-
-
 
 
 void MinesweeperBoard::revealField(int x, int y)
@@ -220,12 +211,13 @@ void MinesweeperBoard::revealField(int x, int y)
 	if (board[x][y].hasMine && firstMove)
 	{
 		setMinesCordsFirstMove(x, y);
-		setMines();		
 		firstMove = false;
+		board[x][y].isRevealed = true;
 	}
 	else
 	{
 		board[x][y].isRevealed = true;
+		firstMove = false;
 	}	
 }
 
