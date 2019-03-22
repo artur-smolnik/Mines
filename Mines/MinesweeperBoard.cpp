@@ -1,6 +1,5 @@
 #include "pch.h"
 #include <iostream>
-#include <conio.h>
 #include <stdlib.h>
 #include "MinesweeperBoard.h"
 
@@ -297,6 +296,12 @@ void MinesweeperBoard::debug_display() const
 		}
 		cout << endl;
 	}	
+}
+
+
+void MinesweeperBoard::display_mines_around(int x, int y)
+{
+	cout << "Mines around: " << countMines(x, y) << endl;
 }
 
 
