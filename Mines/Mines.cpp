@@ -21,6 +21,6 @@ int main()
 	MSBoardTextView view(board);
 	MSTextController ctrl(board, view);
 	ctrl.move();
-	
+
 
 }

@@ -4,8 +4,8 @@
 
 class MSTextController
 {
-	MSBoardTextView msbtv;
-	MinesweeperBoard minesweeperBoard;
+	MSBoardTextView &msbtv;
+	MinesweeperBoard &minesweeperBoard;
 
 public:
 	MSTextController();

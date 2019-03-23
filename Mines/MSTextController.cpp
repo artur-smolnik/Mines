@@ -3,16 +3,10 @@
 //#include <cstdlib>
 #include "conio.h"
 
-MSTextController::MSTextController()
-{
-}
 
 
 MSTextController::MSTextController(MinesweeperBoard &msb, MSBoardTextView &msbtv)
-{
-	this->msbtv = msbtv;
-	this->minesweeperBoard = msb;
-}
+	:msbtv(msbtv), minesweeperBoard(msb) {}
 
 
 void MSTextController::move()

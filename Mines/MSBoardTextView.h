@@ -2,7 +2,7 @@
 #include "MinesweeperBoard.h"
 class MSBoardTextView
 {
-	MinesweeperBoard minesweeperBoard;
+	MinesweeperBoard &minesweeperBoard;
 
 public:
 	MSBoardTextView();
