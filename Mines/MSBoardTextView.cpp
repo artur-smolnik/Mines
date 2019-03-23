@@ -6,6 +6,7 @@
 using namespace std;
 
 
+//MSBoardTextView::MSBoardTextView(){}
 
 MSBoardTextView::MSBoardTextView(MinesweeperBoard &msb)
 :minesweeperBoard(msb){}

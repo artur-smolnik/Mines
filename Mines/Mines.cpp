@@ -17,7 +17,7 @@ int main()
 	//const int UP = 72, DOWN = 80, ENTER = 13, LEFT = 75, RIGHT = 77;
 
 	srand(time(NULL));
-	MinesweeperBoard board(10, 10, GameMode::HARD);
+	MinesweeperBoard board(3, 3, GameMode::HARD);
 	MSBoardTextView view(board);
 	MSTextController ctrl(board, view);
 	ctrl.move();

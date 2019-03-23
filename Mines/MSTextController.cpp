@@ -4,6 +4,7 @@
 #include "conio.h"
 
 
+//MSTextController::MSTextController(){}
 
 MSTextController::MSTextController(MinesweeperBoard &msb, MSBoardTextView &msbtv)
 	:msbtv(msbtv), minesweeperBoard(msb) {}
