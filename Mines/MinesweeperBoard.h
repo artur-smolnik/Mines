@@ -18,7 +18,7 @@ class MinesweeperBoard
 		int x, y;
 	};
 
-	
+	int remainingMines;
 	GameMode gameMode;
 	GameState gameState;
 	int width, height, minesAmount;
@@ -41,6 +41,8 @@ public:
 	int getBoardWidth() const;
 	int getBoardHeight() const;
 	int getMineCount() const;
+	GameState getGameState();
+	void setGameState(int x, int y);
 	char getFieldInfo(int x, int y) const;
 	bool hasFlag(int x, int y) const;
 	bool hasMine(int x, int y) const;

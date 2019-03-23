@@ -29,32 +29,7 @@ void MSBoardTextView::display(int x, int y) const
 			{
 				cout << "[";
 			}
-			if (minesweeperBoard.hasMine(j, i) == false)
-			{
-				cout << ".";
-			}
-			else
-			{
-				cout << "M";
-			}
-
-			if (minesweeperBoard.isRevealed(j, i) == false)
-			{
-				cout << ".";
-			}
-			else
-			{
-				cout << "o";
-			}
-
-			if (minesweeperBoard.hasFlag(j, i) == false)
-			{
-				cout << ".";
-			}
-			else
-			{
-				cout << "F";
-			}
+			cout << minesweeperBoard.getFieldInfo(j, i);
 			if (j == x && i == y)
 			{
 				cout << "}";

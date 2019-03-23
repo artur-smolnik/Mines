@@ -2,6 +2,9 @@
 #include "MSTextController.h"
 //#include <cstdlib>
 #include "conio.h"
+#include <iostream>
+
+using namespace std;
 
 
 //MSTextController::MSTextController(){}
@@ -30,6 +33,7 @@ void MSTextController::move()
 				system("CLS");
 				msbtv.display(x, y);
 				minesweeperBoard.display_mines_around(x, y);
+				
 			}
 		}
 		else if (znak == 'r')
@@ -82,6 +86,16 @@ void MSTextController::move()
 				}
 			}
 		}
-	} while (znak != 27); //ESC
+		if (minesweeperBoard.getGameState() != RUNNING)break;
+	} while ((znak != 27  )); //ESC
+
+	if (minesweeperBoard.getGameState() == FINISHED_LOSS)
+	{
+		cout << endl << endl << "ZJEBALES";
+	}
+	else
+	{
+		cout << endl << endl << "KURWA WYGRANKO";
+	}
 }
 
