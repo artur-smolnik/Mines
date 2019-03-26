@@ -15,6 +15,7 @@ MSTextController::MSTextController(MinesweeperBoard &msb, MSBoardTextView &msbtv
 
 void MSTextController::move()
 {
+	
 	//const int UP = 72, DOWN = 80, ENTER = 13, LEFT = 75, RIGHT = 77;
 
 	unsigned char znak;

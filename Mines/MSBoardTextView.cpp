@@ -17,6 +17,7 @@ MSBoardTextView::MSBoardTextView(MinesweeperBoard &msb)
 
 void MSBoardTextView::display(int x, int y) const
 {
+	
 	for (int i = 0; i < minesweeperBoard.getBoardHeight(); i++)
 	{
 		for (int j = 0; j < minesweeperBoard.getBoardWidth(); j++)

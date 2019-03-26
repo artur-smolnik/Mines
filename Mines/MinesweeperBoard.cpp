@@ -139,7 +139,7 @@ void MinesweeperBoard::setMinesAmount()  // evaluates number of traps in our gam
 	}
 }
 
-void MinesweeperBoard::setGameState(int x, int y)
+void MinesweeperBoard::setGameState(int x, int y)  // niezywane
 {
 	if (getFieldInfo(x, y) == 'x')
 	{
@@ -243,7 +243,6 @@ int MinesweeperBoard::countMines(int x, int y) const
 	if (!(x + 1 < 0 || x + 1 >= width || y - 1 < 0 || y - 1 >= height) && board[x + 1][y - 1].hasMine) minesAmount++;
 
 	if (!(x - 1 < 0 || x - 1 >= width || y < 0 || y >= height) && board[x - 1][y].hasMine) minesAmount++;
-	//if (!(x < 0 || x >= width || y < 0 || y >= height) && board[x][y].hasMine) minesAmount++;
 	if (!(x + 1 < 0 || x + 1 >= width || y < 0 || y >= height) && board[x + 1][y].hasMine) minesAmount++;
 
 	if (!(x - 1 < 0 || x - 1 >= width || y + 1 < 0 || y + 1 >= height) && board[x - 1][y + 1].hasMine) minesAmount++;
