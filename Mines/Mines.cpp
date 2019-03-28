@@ -12,42 +12,40 @@ int main()                //ogarnij twi sfml
 
 
 	// Create the main window
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window", sf::Style::Default, settings);
+	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML window", sf::Style::Default, settings);
 
-	sf::VertexArray piramida(sf::Lines);
+	sf::VertexArray grid(sf::Lines);
 
-	int x0 = 50, y0 = 50, rows = 5, columns = 7, cellSize = 50;
+	int x0 = 50, y0 = 50, rows = 7, columns = 10, cellSize = 50;
 	
-		sf::Vertex poczatek, koniec;
-		
-		for (int i = 0; i <= rows; i++)
-		{
-			poczatek.position = sf::Vector2f(x0+(i*cellSize), y0);  //rows
-			poczatek.color = sf::Color(200, 200, 200); // RGB
+	sf::Vertex poczatek, koniec;
 
-			koniec.position = sf::Vector2f(x0+(i*cellSize), (y0 + rows*cellSize));
-			koniec.color = sf::Color(rand() % 255, rand() % 255, rand() % 255);
-			piramida.append(poczatek);
+	for (int i = 0; i <= columns; i++)
+	{
+		poczatek.position = sf::Vector2f(x0 + (i*cellSize), y0);  //columns
+		poczatek.color = sf::Color(200, 200, 200); // RGB
 
-			piramida.append(koniec);
+		koniec.position = sf::Vector2f(x0 + (i*cellSize), (y0 + rows * cellSize));
+		koniec.color = sf::Color(rand() % 255, rand() % 255, rand() % 255);
 
-			
+		grid.append(poczatek);
+		grid.append(koniec);
+	}
 
-		}
+	for (int i = 0; i <= rows; i++)    //rows
+	{
 
-		for (int i = 0; i <= columns; i++)    //columns
-		{
-			
-			poczatek.position = sf::Vector2f(x0, y0 + (i*cellSize));
-			poczatek.color = sf::Color(200, 200, 200); // RGB
+		poczatek.position = sf::Vector2f(x0, y0 + (i*cellSize));
+		poczatek.color = sf::Color(200, 200, 200); // RGB
 
-			koniec.position = sf::Vector2f((x0+columns*cellSize), y0 + (i*cellSize));
-			koniec.color = sf::Color(rand() % 255, rand() % 255, rand() % 255);
-			
-			piramida.append(poczatek);
-			piramida.append(koniec);
+		koniec.position = sf::Vector2f((x0 + columns * cellSize), y0 + (i*cellSize));
+		koniec.color = sf::Color(rand() % 255, rand() % 255, rand() % 255);
 
-		}
+		grid.append(poczatek);
+		grid.append(koniec);
+
+	}
+
 
 
 		
@@ -67,7 +65,7 @@ int main()                //ogarnij twi sfml
 		// Clear screen
 		window.clear();
 
-		window.draw(piramida);
+		window.draw(grid);
 
 		// Update the window
 		window.display();
