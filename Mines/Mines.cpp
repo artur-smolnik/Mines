@@ -14,41 +14,11 @@ int main()                //ogarnij twi sfml
 	// Create the main window
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML window", sf::Style::Default, settings);
 
-	sf::VertexArray grid(sf::Lines);
+	//rectangle.setPosition(100, 100);
 
-	int x0 = 50, y0 = 50, rows = 7, columns = 10, cellSize = 50;
-	
-	sf::Vertex poczatek, koniec;
+	int x0 = 100, y0 = 100, rows = 15, columns = 20, size = 30, gap = 5;
+	sf::RectangleShape rectangle(sf::Vector2f(size, size));
 
-	for (int i = 0; i <= columns; i++)
-	{
-		poczatek.position = sf::Vector2f(x0 + (i*cellSize), y0);  //columns
-		poczatek.color = sf::Color(200, 200, 200); // RGB
-
-		koniec.position = sf::Vector2f(x0 + (i*cellSize), (y0 + rows * cellSize));
-		koniec.color = sf::Color(rand() % 255, rand() % 255, rand() % 255);
-
-		grid.append(poczatek);
-		grid.append(koniec);
-	}
-
-	for (int i = 0; i <= rows; i++)    //rows
-	{
-
-		poczatek.position = sf::Vector2f(x0, y0 + (i*cellSize));
-		poczatek.color = sf::Color(200, 200, 200); // RGB
-
-		koniec.position = sf::Vector2f((x0 + columns * cellSize), y0 + (i*cellSize));
-		koniec.color = sf::Color(rand() % 255, rand() % 255, rand() % 255);
-
-		grid.append(poczatek);
-		grid.append(koniec);
-
-	}
-
-
-
-		
 
 	// Start the game loop
 	while (window.isOpen())
@@ -64,16 +34,57 @@ int main()                //ogarnij twi sfml
 
 		// Clear screen
 		window.clear();
+		//rectangle.setPosition(100, 100);
 
-		window.draw(grid);
+		for (int i = 0; i < rows; i++)
+		{
+			for (int j = 0; j < columns; j++)
+			{
+				window.draw(rectangle);
+				rectangle.setPosition(x0+i*size+i*gap,y0 +j*size + j*gap);    //cols,rows
 
-		// Update the window
+			}
+		}
+		
+		 //Update the window
 		window.display();
 	}
 
 	return EXIT_SUCCESS;
 }
 
+
+//sf::VertexArray grid(sf::Lines);
+
+//int x0 = 50, y0 = 50, rows = 7, columns = 10, cellSize = 50;
+//
+//sf::Vertex poczatek, koniec;
+
+//for (int i = 0; i <= columns; i++)
+//{
+//	poczatek.position = sf::Vector2f(x0 + (i*cellSize), y0);  //columns
+//	poczatek.color = sf::Color(200, 200, 200); // RGB
+
+//	koniec.position = sf::Vector2f(x0 + (i*cellSize), (y0 + rows * cellSize));
+//	koniec.color = sf::Color(rand() % 255, rand() % 255, rand() % 255);
+
+//	grid.append(poczatek);
+//	grid.append(koniec);
+//}
+
+//for (int i = 0; i <= rows; i++)    //rows
+//{
+
+//	poczatek.position = sf::Vector2f(x0, y0 + (i*cellSize));
+//	poczatek.color = sf::Color(200, 200, 200); // RGB
+
+//	koniec.position = sf::Vector2f((x0 + columns * cellSize), y0 + (i*cellSize));
+//	koniec.color = sf::Color(rand() % 255, rand() % 255, rand() % 255);
+
+//	grid.append(poczatek);
+//	grid.append(koniec);
+
+//}
 
 
 
