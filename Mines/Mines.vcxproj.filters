@@ -33,6 +33,9 @@
     <ClInclude Include="MSTextController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GraphicController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -54,6 +57,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MSTextController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

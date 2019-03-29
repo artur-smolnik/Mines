@@ -10,7 +10,7 @@
 
 int main()                //ogarnij twi sfml
 {
-	int x0 = 100, y0 = 100, columns = 5, rows = 5, size = 80, gap = 5;
+	int x0 = 10, y0 = 10, columns = 10, rows = 10, size = 80, gap = 5;
 	
 	MinesweeperBoard msb(columns, rows, HARD);
 	

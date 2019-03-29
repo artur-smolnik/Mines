@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AdditionalFunctions.h" />
+    <ClInclude Include="GraphicController.h" />
     <ClInclude Include="MinesweeperBoard.h" />
     <ClInclude Include="MSBoardTextView.h" />
     <ClInclude Include="MSTextController.h" />
@@ -180,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdditionalFunctions.cpp" />
+    <ClCompile Include="GraphicController.cpp" />
     <ClCompile Include="Mines.cpp" />
     <ClCompile Include="MinesweeperBoard.cpp" />
     <ClCompile Include="MSBoardTextView.cpp" />
