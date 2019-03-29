@@ -24,7 +24,6 @@ class MinesweeperBoard
 	int width, height, minesAmount;
 	bool firstMove;
 	Field board[100][100];
-	//char* info;
 	std::vector<mineCords> minesCords;
 	void setMinesCords();
 	void setMinesCordsFirstMove(int x, int y);
@@ -51,6 +50,6 @@ public:
 	void display_mines_around(int x, int y); //additional func
 	void toggleFlag(int x, int y);
 	void revealField(int x, int y);	
-	
+	std::vector<mineCords> getMinesCords();  //additional func for stage5 
 	
 };

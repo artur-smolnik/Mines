@@ -5,11 +5,15 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include "MinesweeperBoard.h"
+
 
 int main()                //ogarnij twi sfml
 {
-	int x0 = 100, y0 = 100, rows = 5, columns = 5, size = 80, gap = 5;
-
+	int x0 = 100, y0 = 100, columns = 5, rows = 5, size = 80, gap = 5;
+	
+	MinesweeperBoard msb(columns, rows, HARD);
+	
 
 	std::vector<sf::RectangleShape> rectangles;
 	sf::ContextSettings settings;
@@ -18,6 +22,9 @@ int main()                //ogarnij twi sfml
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML window", sf::Style::Default, settings);
 
 	sf::RectangleShape rectangle(sf::Vector2f(size, size));
+	sf::Texture texture;
+	if(!texture.loadFromFile("fuckyou.jpg"))std::cout << "ERROR";
+	//rectangle.setTexture(&texture);
 	
 
 	for (int i = 0; i < rows; i++)
@@ -41,14 +48,23 @@ int main()                //ogarnij twi sfml
 				window.close();
 		
 			for (int i = 0; i < rectangles.size(); i++)
-			{
+			{	
 				auto mouse_pos = sf::Mouse::getPosition(window); // Mouse position relative to the window
 				auto translated_pos = window.mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
 				if (rectangles[i].getGlobalBounds().contains(translated_pos))
 				{// Rectangle-contains-point check
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 					{
-						rectangles[i].setFillColor(sf::Color::Red);
+						for (int j = 0; j < msb.getMinesCords().size(); j++)
+						{
+							std::div_t divresult;
+							divresult = std::div(i, rows);
+							if (msb.getMinesCords()[j].x == i % columns && msb.getMinesCords()[j].y == divresult.quot)
+							{
+								rectangles[i].setTexture(&texture);
+							}
+						}
+
 					}
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
 					{
