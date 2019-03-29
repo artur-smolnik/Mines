@@ -4,49 +4,70 @@
 #include "pch.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 
 int main()                //ogarnij twi sfml
 {
+	int x0 = 100, y0 = 100, rows = 5, columns = 5, size = 80, gap = 5;
+
+
+	std::vector<sf::RectangleShape> rectangles;
 	sf::ContextSettings settings;
+	
 	settings.antialiasingLevel = 32;
-
-
-	// Create the main window
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML window", sf::Style::Default, settings);
 
-	//rectangle.setPosition(100, 100);
-
-	int x0 = 100, y0 = 100, rows = 15, columns = 20, size = 30, gap = 5;
 	sf::RectangleShape rectangle(sf::Vector2f(size, size));
-	std::cout << std::endl << rectangle.getGlobalBounds().height << "    " << rectangle.getGlobalBounds().width;
 	
-	// Start the game loop
-	while (window.isOpen())
+
+	for (int i = 0; i < rows; i++)
 	{
-		// Process events
+		for (int j = 0; j < columns; j++)
+		{			
+			rectangle.setPosition(x0 + i * size + i * gap, y0 + j * size + j * gap); //cols,rows
+			rectangles.push_back(rectangle);
+		}
+	}
+
+	
+
+	while (window.isOpen())
+	{		
+		
 		sf::Event event;
 		while (window.pollEvent(event))
-		{
-			// Close window : exit
+		{			
 			if (event.type == sf::Event::Closed)
 				window.close();
+		
+			for (int i = 0; i < rectangles.size(); i++)
+			{
+				auto mouse_pos = sf::Mouse::getPosition(window); // Mouse position relative to the window
+				auto translated_pos = window.mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
+				if (rectangles[i].getGlobalBounds().contains(translated_pos))
+				{// Rectangle-contains-point check
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+					{
+						rectangles[i].setFillColor(sf::Color::Red);
+					}
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+					{
+						rectangles[i].setFillColor(sf::Color::Blue);
+					}
+				}
+			}
+		
 		}
 
-		// Clear screen
+
+		
 		window.clear();
-		//rectangle.setPosition(100, 100);
-
-		for (int i = 0; i < rows; i++)
+		
+		for (int i = 0; i < rectangles.size(); i++)
 		{
-			for (int j = 0; j < columns; j++)
-			{
-				window.draw(rectangle);
-				rectangle.setPosition(x0+i*size+i*gap,y0 +j*size + j*gap);    //cols,rows
-
-			}
+			window.draw(rectangles[i]);
 		}
 		
-		 //Update the window
 		window.display();
 	}
 
