@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics.hpp>
+#include <iostream>
 
 int main()                //ogarnij twi sfml
 {
@@ -18,8 +18,8 @@ int main()                //ogarnij twi sfml
 
 	int x0 = 100, y0 = 100, rows = 15, columns = 20, size = 30, gap = 5;
 	sf::RectangleShape rectangle(sf::Vector2f(size, size));
-
-
+	std::cout << std::endl << rectangle.getGlobalBounds().height << "    " << rectangle.getGlobalBounds().width;
+	
 	// Start the game loop
 	while (window.isOpen())
 	{
