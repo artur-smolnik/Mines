@@ -167,7 +167,6 @@ char MinesweeperBoard::getFieldInfo(int x, int y) const
 	if (board[x][y].isRevealed && countMines(x, y) != 0)
 	{
 		return static_cast<char>(countMines(x, y)+48);
-
 	}
 
 	/*if (x < 0 || x >= width || y < 0 || y >= height) return '#';
