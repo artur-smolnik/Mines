@@ -6,14 +6,18 @@
 #include <iostream>
 #include <vector>
 #include "MinesweeperBoard.h"
+#include "GraphicController.h"
+
 
 
 int main()                //ogarnij twi sfml
 {
 	int x0 = 10, y0 = 10, columns = 10, rows = 10, size = 80, gap = 5;
-	
+	sf::ContextSettings settings(0, 0, 32, 1, 1, 0, false);
+	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SAPER", sf::Style::Default, settings);
 	MinesweeperBoard msb(columns, rows, HARD);
-	
+	GraphicController gc(msb, window, 10, 10, 10, 10, 80, 5, 32, 1000, 1000, EASY);
+	/*
 
 	std::vector<sf::RectangleShape> rectangles;
 	sf::ContextSettings settings;
@@ -35,52 +39,54 @@ int main()                //ogarnij twi sfml
 	if (!texture_6.loadFromFile("6.jpg"))std::cout << "ERROR 6";
 	if (!texture_7.loadFromFile("7.jpg"))std::cout << "ERROR 7";
 	if (!texture_8.loadFromFile("8.jpg"))std::cout << "ERROR 8";
-	
-	
-
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = 0; j < columns; j++)
-		{			
-			rectangle.setPosition(x0 + i * size + i * gap, y0 + j * size + j * gap); //cols,rows
-			rectangles.push_back(rectangle);
-		}
-	}
-
+	*/
 	
 
+	//for (int i = 0; i < rows; i++)
+	//{
+	//	for (int j = 0; j < columns; j++)
+	//	{			
+	//		rectangle.setPosition(x0 + i * size + i * gap, y0 + j * size + j * gap); //cols,rows
+	//		rectangles.push_back(rectangle);
+	//	}
+	//}
+	
+	
+	gc.draw();
+	gc.display();
 	while (window.isOpen())
 	{		
-		
-		sf::Event event;
-		while (window.pollEvent(event))
-		{			
-			if (event.type == sf::Event::Closed)
-				window.close();
-		
-			for (int i = 0; i < rectangles.size(); i++)
-			{	
-				auto mouse_pos = sf::Mouse::getPosition(window); // Mouse position relative to the window
-				auto translated_pos = window.mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
-				if (rectangles[i].getGlobalBounds().contains(translated_pos))
-				{// Rectangle-contains-point check
-					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-					{
-						std::div_t divresult;
-						divresult = std::div(i, rows);
-						msb.revealField(i % columns, divresult.quot);
-					}
-					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
-					{
-						std::div_t divresult;
-						divresult = std::div(i, rows);
-						msb.toggleFlag(i % columns, divresult.quot);						
-					}
-				}
-			}		
-		}
+		//
+		//sf::Event event;
+		//while (window.pollEvent(event))
+		//{			
+		//	if (event.type == sf::Event::Closed)
+		//		window.close();
+		//
+		//	for (int i = 0; i < rectangles.size(); i++)
+		//	{	
+		//		auto mouse_pos = sf::Mouse::getPosition(window); // Mouse position relative to the window
+		//		auto translated_pos = window.mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
+		//		if (rectangles[i].getGlobalBounds().contains(translated_pos))
+		//		{// Rectangle-contains-point check
+		//			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		//			{
+		//				std::div_t divresult;
+		//				divresult = std::div(i, rows);
+		//				msb.revealField(i % columns, divresult.quot);
+		//			}
+		//			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
+		//			{
+		//				std::div_t divresult;
+		//				divresult = std::div(i, rows);
+		//				msb.toggleFlag(i % columns, divresult.quot);						
+		//			}
+		//		}
+		//	}		
+		//}
+		gc.eventsControl();
 
-		for (int i = 0; i < columns*rows; i++)
+		/*for (int i = 0; i < columns*rows; i++)
 		{
 			std::div_t divresult;
 			divresult = std::div(i, rows);
@@ -132,14 +138,11 @@ int main()                //ogarnij twi sfml
 			{
 				rectangles[i].setTexture(&texture_8);
 			}
-		}
-		
+		}*/
+		gc.display();
 		window.clear();
 		
-		for (int i = 0; i < rectangles.size(); i++)
-		{
-			window.draw(rectangles[i]);
-		}
+		gc.draw();
 		
 		window.display();
 		if (msb.getGameState() != RUNNING) std::cin.ignore();

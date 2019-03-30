@@ -9,8 +9,8 @@ class GraphicController
 	MinesweeperBoard &msb;
 	GameMode gameMode;
 	std::vector<sf::RectangleShape> rectangles;
-	sf::ContextSettings settings;
-	sf::RenderWindow window;
+	
+	sf::RenderWindow &window;
 	sf::RectangleShape rectangle;
 	sf::Texture texture_bomb, texture_flag, texture_0, texture_1, texture_2, texture_3, texture_4, texture_5, texture_6, texture_7, texture_8;
 
@@ -19,13 +19,17 @@ class GraphicController
 	
 	void loadTextures();
 	void setRectanglesVector();
-	void eventsControl();
-	void display();
+	
+	
 public:
 	GraphicController();
-	GraphicController(MinesweeperBoard &msb, int x0, int y0, int columns, int rows, int size, int gap, int antialiasingLevel, int windowHeight, int windowWidth, GameMode gameMode);
-	~GraphicController();
-	std::vector<sf::RectangleShape> getRectanglesVector();
+	GraphicController(MinesweeperBoard &msb, sf::RenderWindow &window, int x0, int y0, int columns, int rows, int size, int gap, int antialiasingLevel, int windowHeight, int windowWidth, GameMode gameMode);
 	
+	std::vector<sf::RectangleShape> getRectanglesVector();
+	bool isWindowOpen();
+	void eventsControl();
+	void display();
+	void draw();
+	sf::RenderWindow *getWindow();
 };
 

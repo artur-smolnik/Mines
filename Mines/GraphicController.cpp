@@ -8,23 +8,11 @@
 
 
 
-GraphicController::GraphicController(MinesweeperBoard &msb, int x0, int y0, int columns, int rows, int size, int gap, int antialiasingLevel, int windowHeight, int windowWidth, GameMode gameMode)
+GraphicController::GraphicController(MinesweeperBoard &msb, sf::RenderWindow &window, int x0, int y0, int columns, int rows, int size, int gap, int antialiasingLevel, int windowHeight, int windowWidth, GameMode gameMode)
 	:msb(msb),
-	settings(0, 0, antialiasingLevel, 1, 1, 0, false),
-	window(sf::VideoMode(windowWidth, windowHeight), windowName, sf::Style::Default, settings),
+	window(window),
 	rectangle(sf::Vector2f(size, size))
-	
 {
-	this->x0 = x0;
-	this->y0 = y0;
-	this->columns = columns;
-	this->rows = rows;
-	this->size = size;
-	this->gap = gap;
-	this->antialiasingLevel = antialiasingLevel;
-	this->windowHeight = windowHeight;
-	this->windowWidth = windowWidth;
-	this->gameMode = gameMode;
 	
 	loadTextures();
 	setRectanglesVector();
@@ -34,6 +22,12 @@ std::vector<sf::RectangleShape> GraphicController::getRectanglesVector()
 {
 	return rectangles;
 }
+
+bool GraphicController::isWindowOpen()
+{
+	return window.isOpen();
+}
+
 
 void GraphicController::loadTextures()
 {
@@ -149,5 +143,18 @@ void GraphicController::display()
 			rectangles[i].setTexture(&texture_8);
 		}
 	}
+}
+
+void GraphicController::draw()
+{
+	for (int i = 0; i < rectangles.size(); i++)
+	{
+		window.draw(rectangles[i]);
+	}
+}
+
+sf::RenderWindow * GraphicController::getWindow()
+{
+	return &window;
 }
 
