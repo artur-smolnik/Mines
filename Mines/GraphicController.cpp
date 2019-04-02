@@ -74,13 +74,13 @@ void GraphicController::eventsControl()
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 				{
 					std::div_t divresult;
-					divresult = std::div(i, rows);
+					divresult = std::div(i, columns);
 					msb.revealField(i % columns, divresult.quot);
 				}
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
 				{
 					std::div_t divresult;
-					divresult = std::div(i, rows);
+					divresult = std::div(i, columns);
 					msb.toggleFlag(i % columns, divresult.quot);
 				}
 			}
@@ -93,7 +93,7 @@ void GraphicController::display()
 	for (int i = 0; i < columns*rows; i++)
 	{
 		std::div_t divresult;
-		divresult = std::div(i, rows);
+		divresult = std::div(i, columns);
 		if (msb.getFieldInfo(i % columns, divresult.quot) == 'F')
 		{
 			rectangles[i].setTexture(&texture_flag);
