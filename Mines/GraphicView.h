@@ -23,6 +23,6 @@ public:
 	void draw();
 
 	std::vector<sf::RectangleShape> &getRectangles();
-	
+	int getColumns();
 };
 

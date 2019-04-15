@@ -121,3 +121,8 @@ std::vector<sf::RectangleShape>& GraphicView::getRectangles()
 	return rectangles;
 }
 
+int GraphicView::getColumns()
+{
+	return columns;
+}
+

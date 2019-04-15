@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "GameManager.h"
-GameManager::GameManager(IntroController &ic , MinesweeperController &mc, ScoreController &sc)
-	: introController(ic), minesweeperController(mc), scoreController(sc)
+GameManager::GameManager(IntroController &ic , GraphicController &mc, ScoreController &sc)
+	: introController(ic), graphicController(mc), scoreController(sc)
 {
 
 	state = INTRO;
@@ -14,7 +14,7 @@ void GameManager::updateState() {
 			state = GAME;
 		break;
 	case GAME:
-		if (minesweeperController.isFinished())
+		if (graphicController.isFinished())
 			state = SCORE;
 		break;
 	case SCORE:
@@ -31,7 +31,8 @@ void GameManager::handleEvent(sf::Event &event)
 		introController.handleEvent(event);
 		break;
 	case GAME:
-		minesweeperController.handleEvent(event);
+		graphicController.handleEvent();
+		//graphicController.handleEvent(event);
 		break;
 	case SCORE:
 		scoreController.handleEvent(event);

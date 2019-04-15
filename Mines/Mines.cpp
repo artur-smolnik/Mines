@@ -10,7 +10,7 @@
 #include "IntroView.h"
 #include "IntroController.h"
 #include "MinesweeperView.h"
-#include "MinesweeperController.h"
+#include "GraphicController.h"
 #include "ScoreView.h"
 #include "ScoreController.h"
 #include "GameManager.h"
@@ -25,6 +25,8 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SAPER");
 	MinesweeperBoard msb(columns, rows, DEBUG);
 	GraphicView graphicView(msb, window, x0, y0, columns, rows, size, gap);
+	MinesweeperView minesweeperView(graphicView);
+	GraphicController graphicController(minesweeperView, graphicView, window, msb);
 
 		
 	while (window.isOpen())
@@ -36,26 +38,8 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			for (int i = 0; i < graphicView.getRectangles().size(); i++)
-			{
-				auto mouse_pos = sf::Mouse::getPosition(window); // Mouse position relative to the window
-				auto translated_pos = window.mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
-				if (graphicView.getRectangles()[i].getGlobalBounds().contains(translated_pos))
-				{                 // Rectangle-contains-point check
-					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-					{
-						std::div_t divresult;
-						divresult = std::div(i, columns);
-						msb.revealField(i % columns, divresult.quot);
-					}
-					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
-					{
-						std::div_t divresult;
-						divresult = std::div(i, columns);
-						msb.toggleFlag(i % columns, divresult.quot);
-					}
-				}
-			}
+			graphicController.handleEvent();
+			
 		}
 
 		

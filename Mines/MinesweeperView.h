@@ -1,14 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "MSFMLView.h"
+#include "GraphicView.h"
 
 class MinesweeperView {
-	//    sf::Clock clk;
-	//    sf::Font font;
-	//    sf::Text txt;
-	MSFMLView &mssfmLview;
+	
+	GraphicView &graphicView;
+	sf::RenderWindow renderWindow;
+
 public:
 	//MinesweeperView();
-	MinesweeperView(MSFMLView &mssfmLview);
-	void draw(sf::RenderWindow &win);
+	MinesweeperView(GraphicView &graphicView);
+
+	void draw();
 };

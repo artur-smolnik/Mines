@@ -33,9 +33,6 @@
     <ClInclude Include="MSTextController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MSFMLView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,9 +45,6 @@
     <ClInclude Include="IntroController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MinesweeperController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ScoreController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,6 +55,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GraphicView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,9 +83,6 @@
     <ClCompile Include="MSTextController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MSFMLView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -101,9 +95,6 @@
     <ClCompile Include="IntroController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MinesweeperController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ScoreController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -114,6 +105,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GraphicView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

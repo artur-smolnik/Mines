@@ -3,9 +3,13 @@
 #include "MinesweeperView.h"
 #include "MSFMLView.h"
 
-MinesweeperView::MinesweeperView(MSFMLView &mssfmLview) :mssfmLview(mssfmLview) {}
+MinesweeperView::MinesweeperView(GraphicView & graphicView)
+:graphicView(graphicView)
+{
+}
 
-void MinesweeperView::draw(sf::RenderWindow &win) {
-	mssfmLview.draw();
+
+void MinesweeperView::draw() {
+	graphicView.draw();
 }
 

@@ -178,7 +178,6 @@
     <ClInclude Include="IntroController.h" />
     <ClInclude Include="IntroView.h" />
     <ClInclude Include="MinesweeperBoard.h" />
-    <ClInclude Include="MinesweeperController.h" />
     <ClInclude Include="MinesweeperView.h" />
     <ClInclude Include="MSBoardTextView.h" />
     <ClInclude Include="MSFMLView.h" />
@@ -197,7 +196,6 @@
     <ClCompile Include="IntroView.cpp" />
     <ClCompile Include="Mines.cpp" />
     <ClCompile Include="MinesweeperBoard.cpp" />
-    <ClCompile Include="MinesweeperController.cpp" />
     <ClCompile Include="MinesweeperView.cpp" />
     <ClCompile Include="MSBoardTextView.cpp" />
     <ClCompile Include="MSFMLView.cpp" />
