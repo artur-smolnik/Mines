@@ -2,9 +2,11 @@
 #include "MinesweeperBoard.h"
 #include <string>
 #include <SFML/Graphics.hpp>
-class GraphicController
+//MSSFMLview(int squarsize,Minesweeperboard &msb,int square_position_x,int square_position_y,sf::RenderWindow &win);
+
+class GraphicView
 {
-	int x0, y0, columns, rows, size, gap, antialiasingLevel, windowHeight, windowWidth;
+	int x0, y0, columns, rows, size, gap, windowHeight, windowWidth;
 	const std::string windowName;
 	MinesweeperBoard &msb;
 	GameMode gameMode;
@@ -17,19 +19,17 @@ class GraphicController
 	
 	
 	
-	void loadTextures();
-	void setRectanglesVector();
 	
 	
 public:
-	GraphicController();
-	GraphicController(MinesweeperBoard &msb, sf::RenderWindow &window, int x0, int y0, int columns, int rows, int size, int gap, int antialiasingLevel, int windowHeight, int windowWidth, GameMode gameMode);
-	
+	GraphicView();
+	GraphicView(MinesweeperBoard &msb, sf::RenderWindow &window, int x0, int y0, int columns, int rows, int size, int gap,  int windowHeight, int windowWidth, GameMode gameMode);
+	/*
 	std::vector<sf::RectangleShape> getRectanglesVector();
 	bool isWindowOpen();
 	void eventsControl();
 	void display();
 	void draw();
-	sf::RenderWindow *getWindow();
+	sf::RenderWindow *getWindow();*/
 };
 

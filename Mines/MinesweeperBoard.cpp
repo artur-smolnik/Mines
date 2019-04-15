@@ -9,6 +9,8 @@
 
 
 using namespace std;
+
+
 MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode) {
 	this->width = width;
 	this->height = height;
