@@ -4,8 +4,8 @@
 #include "MinesweeperBoard.h"
 
 struct sSettings {
-	int columns =0;
-	int rows = 0;
+	int columns;
+	int rows;
 	GameMode gameMode;
 };
 
@@ -18,10 +18,10 @@ class IntroController {
 public:
 	explicit IntroController(IntroView & introView);
 
-	void handleEvent();
+	void handleEvent(sf::Event event);
 	sSettings getSettings();
 
 	// no need to change this
-	void draw();
+	void draw() { introView.draw(); }
 	bool isFinished() const { return finished; }
 };

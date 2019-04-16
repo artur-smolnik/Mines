@@ -24,6 +24,7 @@ int main()
 	
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SAPER");
 	sf::Event event;
+	
 	IntroView introView(window);
 	IntroController introController(introView);
 	MinesweeperBoard msb(introController.getSettings().columns, introController.getSettings().rows, introController.getSettings().gameMode);
@@ -59,7 +60,7 @@ int main()
 		//gc.display();
 		window.clear();
 
-		//introController.draw();
+		//introController.handleEvent(event);
 		//graphicView.draw();
 		gameManager.handleEvent(event);
 

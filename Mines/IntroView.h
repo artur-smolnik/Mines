@@ -6,12 +6,7 @@
 
 class IntroView {
 	
-	struct sSettings
-	{
-		int columns;
-		int rows;
-		GameMode gameMode;
-	};
+	
 
 	sf::RectangleShape rect;
 	sf::RectangleShape rect_easy_mode;
@@ -36,7 +31,7 @@ public:
 	IntroView(sf::RenderWindow &renderWindow);
 	std::vector<sf::RectangleShape> &getRectangles();
 	sf::RenderWindow &getWindow() const;
-	sSettings getSettings();
+	
 	void draw();
 	const sf::RectangleShape &getRect_easy_mode() const;
 	const sf::RectangleShape &getRect_normal_mode() const;

@@ -10,22 +10,20 @@ IntroController::IntroController(IntroView &introView) : introView(introView)
 	settings.columns = 0;
 	settings.rows = 0;
 	settings.gameMode = DEBUG;
-	handleEvent();
+	
 }
 
-void IntroController::handleEvent() 
-{
-	
-	int tmpMode = 0, tmpSize = 0, tmpPlay = 0;
-	
-		draw();
-		auto mouse_pos = sf::Mouse::getPosition(introView.getWindow()); // Mouse position relative to the window
+void IntroController::handleEvent(sf::Event event)
+{		
+	draw();
+	auto mouse_pos = sf::Mouse::getPosition(introView.getWindow()); // Mouse position relative to the window
 		auto translated_pos = introView.getWindow().mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
 
 		if (introView.getRect_easy_mode().getGlobalBounds().contains(translated_pos)) {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
-				introView.setFillColorEasyMode();
+				std::cout << "chuj";
+				//introView.setFillColorEasyMode();
 				settings.gameMode = EASY;
 			}
 		}
@@ -45,19 +43,19 @@ void IntroController::handleEvent()
 		if (introView.getRect_small_size().getGlobalBounds().contains(translated_pos)) {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
-				introView.setFillColorSmallSize();
+				//introView.setFillColorSmallSize();
 				settings.columns = 10;
 				settings.rows = 10;
 			}
 		}
-		else if (introView.getRect_normal_size().getGlobalBounds().contains(translated_pos)) {
+		if (introView.getRect_normal_size().getGlobalBounds().contains(translated_pos)) {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
 				settings.columns = 20;
 				settings.rows = 15;
 			}
 		}
-		else if (introView.getRect_big_size().getGlobalBounds().contains(translated_pos)) {
+		if (introView.getRect_big_size().getGlobalBounds().contains(translated_pos)) {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
 				settings.columns = 30;
@@ -74,10 +72,6 @@ void IntroController::handleEvent()
 	 	
 }
 
-void IntroController::draw()
-{
-	introView.draw();
-}
 
 sSettings IntroController::getSettings()
 {

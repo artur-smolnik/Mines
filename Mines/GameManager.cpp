@@ -26,7 +26,7 @@ void GameManager::handleEvent(sf::Event &event)
 {
 	switch (state) {
 	case INTRO:
-		introController.handleEvent();
+		introController.handleEvent(event);
 		break;
 	case GAME:
 		graphicController.handleEvent();

@@ -51,5 +51,9 @@ public:
 	void toggleFlag(int x, int y);
 	void revealField(int x, int y);	
 	std::vector<mineCords> getMinesCords();  //additional func for stage5 
+
+	void setColumns(int columns);
+	void setRows(int rows);
+	void setGameMode(GameMode gameMode);
 	
 };
