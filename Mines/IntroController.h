@@ -1,23 +1,27 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "IntroView.h"
-enum IntroGameMode { INTRO_EASY, INTRO_NORMAL, INTRO_HARD };
-enum IntroSize { intro_small, intro_normal, intro_big };
+#include "MinesweeperBoard.h"
 
+struct sSettings {
+	int columns =0;
+	int rows = 0;
+	GameMode gameMode;
+};
 
 class IntroController {
 	bool finished = false;
-	IntroView & view;
-	IntroGameMode introGameMode;
-	IntroSize introSize;
+	IntroView & introView;
 	
+	sSettings settings;
 	// IntroModel & model;
 public:
-	explicit IntroController(IntroView & iv);
+	explicit IntroController(IntroView & introView);
 
-	void handleEvent(sf::Event &event);
+	void handleEvent();
+	sSettings getSettings();
 
 	// no need to change this
-	void draw(sf::RenderWindow & win) { view.draw(win); }
+	void draw();
 	bool isFinished() const { return finished; }
 };

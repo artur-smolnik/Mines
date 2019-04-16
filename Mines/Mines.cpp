@@ -23,22 +23,35 @@ int main()
 	
 	
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SAPER");
-	MinesweeperBoard msb(columns, rows, DEBUG);
+	sf::Event event;
+	IntroView introView(window);
+	IntroController introController(introView);
+	MinesweeperBoard msb(introController.getSettings().columns, introController.getSettings().rows, introController.getSettings().gameMode);
 	GraphicView graphicView(msb, window, x0, y0, columns, rows, size, gap);
 	MinesweeperView minesweeperView(graphicView);
 	GraphicController graphicController(minesweeperView, graphicView, window, msb);
+	ScoreView scoreView;
+	ScoreController scoreController(scoreView);
+	
+
+	GameManager gameManager(introController, graphicController, scoreController);
 
 		
 	while (window.isOpen())
 	{
 
 		sf::Event event;
+		
+		
+		
+		
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			graphicController.handleEvent();
+			//gameManager.handleEvent(event);
+			//graphicController.handleEvent();
 			
 		}
 
@@ -46,8 +59,9 @@ int main()
 		//gc.display();
 		window.clear();
 
-		//gc.draw();
-		graphicView.draw();
+		//introController.draw();
+		//graphicView.draw();
+		gameManager.handleEvent(event);
 
 		window.display();
 		if (msb.getGameState() != RUNNING) std::cin.ignore();

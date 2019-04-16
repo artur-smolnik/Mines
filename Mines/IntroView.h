@@ -2,11 +2,17 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include "MinesweeperBoard.h"
 
 class IntroView {
 	
-	
-	
+	struct sSettings
+	{
+		int columns;
+		int rows;
+		GameMode gameMode;
+	};
+
 	sf::RectangleShape rect;
 	sf::RectangleShape rect_easy_mode;
 	sf::RectangleShape rect_normal_mode;
@@ -23,28 +29,23 @@ class IntroView {
 	sf::Text txt_small_size;
 	sf::Text txt_normal_size;
 	sf::Text txt_big_size;
-	sf::RenderWindow &window;
-	std::vector<sf::RectangleShape> rectangles;
-
+	sf::RenderWindow &renderWindow;
+	std::vector<sf::RectangleShape> rectangles;	
 	
-	
-	
-
-	
-
 public:
+	IntroView(sf::RenderWindow &renderWindow);
 	std::vector<sf::RectangleShape> &getRectangles();
-
+	sf::RenderWindow &getWindow() const;
+	sSettings getSettings();
+	void draw();
 	const sf::RectangleShape &getRect_easy_mode() const;
 	const sf::RectangleShape &getRect_normal_mode() const;
 	const sf::RectangleShape &getRect_hard_mode() const;
-	sf::RenderWindow &getWindow() const;
-	IntroView(sf::RenderWindow &window);
 	const sf::RectangleShape &getRect() const;
-	void draw(sf::RenderWindow &win);
 	const sf::RectangleShape &getRect_small_size() const;
 	const sf::RectangleShape &getRect_normal_size() const;
 	const sf::RectangleShape &getRect_big_size() const;
-
+	void setFillColorEasyMode();
+	void setFillColorSmallSize();
 	
 };

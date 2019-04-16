@@ -3,7 +3,6 @@
 GameManager::GameManager(IntroController &ic , GraphicController &mc, ScoreController &sc)
 	: introController(ic), graphicController(mc), scoreController(sc)
 {
-
 	state = INTRO;
 }
 
@@ -25,10 +24,9 @@ void GameManager::updateState() {
 
 void GameManager::handleEvent(sf::Event &event)
 {
-	updateState();
 	switch (state) {
 	case INTRO:
-		introController.handleEvent(event);
+		introController.handleEvent();
 		break;
 	case GAME:
 		graphicController.handleEvent();
@@ -38,14 +36,15 @@ void GameManager::handleEvent(sf::Event &event)
 		scoreController.handleEvent(event);
 		break;
 	}
-	
+	updateState();
+
 }
 
 void GameManager::draw(sf::RenderWindow &win) {
 	updateState();
 	switch (state) {
 	case INTRO:
-		introController.draw(win);
+		introController.draw();
 		break;
 	case GAME:
 		//minesweeperController.draw(win);

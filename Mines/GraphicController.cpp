@@ -10,6 +10,7 @@ GraphicController::GraphicController(MinesweeperView & minesweeperView, GraphicV
 
 void GraphicController::handleEvent()
 {
+	draw(renderWindow);
 	for (int i = 0; i < graphicView.getRectangles().size(); i++)
 	{
 		auto mouse_pos = sf::Mouse::getPosition(renderWindow); // Mouse position relative to the window

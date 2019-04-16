@@ -3,7 +3,18 @@
 #include <cstdlib> // abort()
 
 
-IntroView::IntroView(sf::RenderWindow &window) : window(window) {
+void IntroView::setFillColorEasyMode()
+{
+	rect_easy_mode.setFillColor(sf::Color::Blue);
+}
+
+void IntroView::setFillColorSmallSize()
+{
+	rect_small_size.setFillColor(sf::Color::Blue);
+
+}
+
+IntroView::IntroView(sf::RenderWindow &renderWindow) : renderWindow(renderWindow) {
 	if (!font.loadFromFile("arial.ttf")) {
 		abort();
 	}
@@ -80,36 +91,31 @@ IntroView::IntroView(sf::RenderWindow &window) : window(window) {
 	rectangles.push_back(rect_normal_size);
 	rectangles.push_back(rect_big_size);
 
-	sf::RectangleShape rect;
-	sf::RectangleShape rect_easy_mode;
-	sf::RectangleShape rect_normal_mode;
-	sf::RectangleShape rect_hard_mode;
-	sf::RectangleShape rect_small_size;
-	sf::RectangleShape rect_normal_size;
-	sf::RectangleShape rect_big_size;
+	
 }
 
-void IntroView::draw(sf::RenderWindow &win) {
-	win.draw(rect);
-	win.draw(txt_play);
-	win.draw(txt);
-	win.draw(rect_easy_mode);
-	win.draw(txt_easy);
-	win.draw(rect_normal_mode);
-	win.draw(txt_normal);
-	win.draw(rect_hard_mode);
-	win.draw(txt_hard);
-	win.draw(rect_small_size);
-	win.draw(txt_small_size);
-	win.draw(rect_normal_size);
-	win.draw(txt_normal_size);
-	win.draw(rect_big_size);
-	win.draw(txt_big_size);
+void IntroView::draw() {
+	renderWindow.draw(rect);
+	renderWindow.draw(txt_play);
+	renderWindow.draw(txt);
+	renderWindow.draw(rect_easy_mode);
+	renderWindow.draw(txt_easy);
+	renderWindow.draw(rect_normal_mode);
+	renderWindow.draw(txt_normal);
+	renderWindow.draw(rect_hard_mode);
+	renderWindow.draw(txt_hard);
+	renderWindow.draw(rect_small_size);
+	renderWindow.draw(txt_small_size);
+	renderWindow.draw(rect_normal_size);
+	renderWindow.draw(txt_normal_size);
+	renderWindow.draw(rect_big_size);
+	renderWindow.draw(txt_big_size);
 }
 
 sf::RenderWindow &IntroView::getWindow() const {
-	return window;
+	return renderWindow;;
 }
+
 
 const sf::RectangleShape &IntroView::getRect() const {
 	return rect;
