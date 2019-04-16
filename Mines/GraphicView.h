@@ -25,5 +25,7 @@ public:
 	std::vector<sf::RectangleShape> &getRectangles();
 	int getColumns();
 	void setColumns(int newColumns);
+	void setRows(int newRows) { rows = newRows; }
+	void setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode);
 };
 

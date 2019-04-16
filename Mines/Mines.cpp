@@ -29,7 +29,7 @@ int main()
 	MinesweeperBoard msb(30, 30, HARD);
 
 	GraphicView graphicView(msb, window);
-	IntroController introController(introView, graphicView);
+	IntroController introController(introView, graphicView, msb);
 	MinesweeperView minesweeperView(graphicView);
 	GraphicController graphicController(minesweeperView, graphicView, window, msb);
 	ScoreView scoreView;

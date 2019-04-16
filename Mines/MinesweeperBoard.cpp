@@ -15,22 +15,33 @@ MinesweeperBoard::MinesweeperBoard(int width = 0, int height = 0, GameMode mode 
 	: width(width),
 	height(height)
 {
-	this->width = width;
-	this->height = height;
+	/*this->width = width;
+	this->height = height;*/
 	this->gameState = RUNNING;
-	this->gameMode = mode;
+	//this->gameMode = mode;
 	this->firstMove = true;
 	this->remainingMines = getMineCount();
-	setBoard();
+	/*setBoard();
 	setMinesAmount();
 	setMinesCords();
-	setMines();
+	setMines();*/
 	//info = new char[6];
 
 }
 
 MinesweeperBoard::MinesweeperBoard()
 {
+}
+
+void MinesweeperBoard::setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode)
+{
+	this->width = width;
+	this->height = height;
+	this->gameMode = gameMode;
+	setBoard();
+	setMinesAmount();
+	setMinesCords();
+	setMines();
 }
 
 
@@ -252,6 +263,7 @@ void MinesweeperBoard::setGameMode(GameMode gameMode)
 {
 	this->gameMode = gameMode;
 }
+
 
 
 

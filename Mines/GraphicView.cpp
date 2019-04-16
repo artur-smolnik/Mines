@@ -13,13 +13,22 @@ GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 {
 	this->x0 = 50;
 	this->y0 = 50;
-	this->columns = msb.getBoardWidth();
-	this->rows = msb.getBoardHeight();
-	std::cout <<"graphic view : " << msb.getBoardHeight() << std::endl;
-	std::cout << msb.getBoardWidth()  << std::endl;
+	/*this->columns = msb.getBoardWidth();
+	this->rows = msb.getBoardHeight();*/
+	
+	
 	this->size = 50;
 	this->gap = 5;
 
+	/*loadTextures();
+	setRectanglesVector();*/
+}
+
+void GraphicView::setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode)
+{
+	this->columns = width;
+	this->rows = height;
+	this->gameMode = gameMode;
 	loadTextures();
 	setRectanglesVector();
 }

@@ -55,5 +55,7 @@ public:
 	void setColumns(int columns);
 	void setRows(int rows);
 	void setGameMode(GameMode gameMode);
+
+	void setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode);
 	
 };

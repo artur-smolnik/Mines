@@ -13,13 +13,13 @@ struct sSettings {
 class IntroController {
 	bool finished = false;
 	IntroView & introView;
-	//MinesweeperBoard &minesweeperBoard;
+	MinesweeperBoard &minesweeperBoard;
 	GraphicView &graphicView;
 	
 	sSettings settings;
 	
 public:
-	IntroController(IntroView & introView, GraphicView &graphicView);
+	IntroController(IntroView & introView, GraphicView &graphicView, MinesweeperBoard &minesweeperBoard);
 
 	void handleEvent(sf::Event event);
 	sSettings getSettings();

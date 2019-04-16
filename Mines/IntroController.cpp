@@ -4,11 +4,12 @@
 #include <vector>
 #include <iostream>
 
-IntroController::IntroController(IntroView &introView, GraphicView &graphicView)
+IntroController::IntroController(IntroView &introView, GraphicView &graphicView, MinesweeperBoard &minesweeperBoard)
 
 //IntroController::IntroController(IntroView &introView, MinesweeperBoard &minesweeperBoard)
 	: introView(introView),
-	graphicView(graphicView)
+	graphicView(graphicView),
+	minesweeperBoard(minesweeperBoard)
 	
 {
 	settings.columns = 0;
@@ -32,7 +33,7 @@ void IntroController::handleEvent(sf::Event event)
 		if (introView.getRect_normal_mode().getGlobalBounds().contains(translated_pos)) {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
-				gm = NORMAL;
+				settings.gameMode = NORMAL;
 			}
 		}
 		if (introView.getRect_hard_mode().getGlobalBounds().contains(translated_pos)) {
@@ -69,6 +70,8 @@ void IntroController::handleEvent(sf::Event event)
 			{
 				if (settings.columns != 0 && settings.rows != 0 && settings.gameMode != DEBUG)
 				{					
+					minesweeperBoard.setWidthAndHeightAndGameMode(settings.columns, settings.rows, settings.gameMode);
+					graphicView.setWidthAndHeightAndGameMode(settings.columns, settings.rows, settings.gameMode);
 					finished = true;
 				}
 			}
