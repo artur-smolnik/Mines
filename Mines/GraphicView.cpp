@@ -7,16 +7,18 @@
 
 
 
-GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow, int x0, int y0, int columns, int rows, int size, int gap)
+GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	:msb(msb),
 	renderWindow(renderWindow)
 {
-	this->x0 = x0;
-	this->y0 = y0;
-	this->columns = columns;
-	this->rows = rows;
-	this->size = size;
-	this->gap = gap;
+	this->x0 = 50;
+	this->y0 = 50;
+	this->columns = msb.getBoardWidth();
+	this->rows = msb.getBoardHeight();
+	std::cout <<"graphic view : " << msb.getBoardHeight() << std::endl;
+	std::cout << msb.getBoardWidth()  << std::endl;
+	this->size = 50;
+	this->gap = 5;
 	loadTextures();
 	setRectanglesVector();
 }

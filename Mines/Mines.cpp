@@ -26,9 +26,17 @@ int main()
 	
 	
 	IntroView introView(window);
+	//MinesweeperBoard msb(30, 20, HARD);
+	
 	IntroController introController(introView);
-	MinesweeperBoard msb(introController.getSettings().columns, introController.getSettings().rows, introController.getSettings().gameMode);
-	GraphicView graphicView(msb, window, x0, y0, columns, rows, size, gap);
+	/*msb.setColumns(introController.getCols());
+	msb.setRows(introController.getRows());*/
+	//MinesweeperBoard msb(introController.getCols(), introController.getRows(), HARD);
+	int x = introController.getCols();
+
+	MinesweeperBoard msb(x, x, HARD);
+	//MinesweeperBoard msb(introController.getSettings().columns, introController.getSettings().rows, introController.getSettings().gameMode);
+	GraphicView graphicView(msb, window);
 	MinesweeperView minesweeperView(graphicView);
 	GraphicController graphicController(minesweeperView, graphicView, window, msb);
 	ScoreView scoreView;

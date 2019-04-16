@@ -12,11 +12,15 @@ struct sSettings {
 class IntroController {
 	bool finished = false;
 	IntroView & introView;
+	//MinesweeperBoard &minesweeperBoard;
+	
+	GameMode gm = DEBUG;
+	int cols =0, rows=0;
 	
 	sSettings settings;
 	// IntroModel & model;
 public:
-	explicit IntroController(IntroView & introView);
+	 IntroController(IntroView & introView);
 
 	void handleEvent(sf::Event event);
 	sSettings getSettings();
@@ -24,4 +28,7 @@ public:
 	// no need to change this
 	void draw();
 	bool isFinished() const { return finished; }
+	int getCols() { return cols; }
+	int getRows() { return rows; }
+	
 };

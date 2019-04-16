@@ -17,7 +17,7 @@ class GraphicView
 	void setRectanglesVector();
 
 public:
-	GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow, int x0, int y0, int columns, int rows, int size, int gap);
+	GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow);
 	
 	void display();
 	void draw();

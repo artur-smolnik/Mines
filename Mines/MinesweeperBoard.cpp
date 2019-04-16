@@ -11,7 +11,10 @@
 using namespace std;
 
 
-MinesweeperBoard::MinesweeperBoard(int width = 0, int height = 0, GameMode mode = DEBUG) {
+MinesweeperBoard::MinesweeperBoard(int width = 0, int height = 0, GameMode mode = DEBUG)
+	: width(width),
+	height(height)
+{
 	this->width = width;
 	this->height = height;
 	this->gameState = RUNNING;
@@ -237,12 +240,12 @@ std::vector<MinesweeperBoard::mineCords> MinesweeperBoard::getMinesCords()
 
 void MinesweeperBoard::setColumns(int columns)
 {
-	width = columns;
+	this->width = columns;
 }
 
 void MinesweeperBoard::setRows(int rows)
 {
-	height = rows;
+	this->height = rows;
 }
 
 void MinesweeperBoard::setGameMode(GameMode gameMode)
@@ -284,9 +287,9 @@ void MinesweeperBoard::display_mines_around(int x, int y)
 
 
 
-int MinesweeperBoard::getBoardWidth() const { return width; }
+int MinesweeperBoard::getBoardWidth() const { return this->width; }
 
-int MinesweeperBoard::getBoardHeight() const { return height; }
+int MinesweeperBoard::getBoardHeight() const { return this->height; }
 
 int MinesweeperBoard::getMineCount() const { return minesAmount; }
 
