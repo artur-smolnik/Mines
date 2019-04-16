@@ -15,15 +15,15 @@ IntroController::IntroController(IntroView &introView) : introView(introView)
 
 void IntroController::handleEvent(sf::Event event)
 {		
-	draw();
-	auto mouse_pos = sf::Mouse::getPosition(introView.getWindow()); // Mouse position relative to the window
+		
+		auto mouse_pos = sf::Mouse::getPosition(introView.getWindow()); // Mouse position relative to the window
 		auto translated_pos = introView.getWindow().mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
-
+		std::cout << mouse_pos.x << " " << mouse_pos.y << std::endl ;
 		if (introView.getRect_easy_mode().getGlobalBounds().contains(translated_pos)) {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
 				std::cout << "chuj";
-				//introView.setFillColorEasyMode();
+				introView.setFillColorEasyMode();
 				settings.gameMode = EASY;
 			}
 		}
@@ -43,7 +43,7 @@ void IntroController::handleEvent(sf::Event event)
 		if (introView.getRect_small_size().getGlobalBounds().contains(translated_pos)) {
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
-				//introView.setFillColorSmallSize();
+				introView.setFillColorSmallSize();
 				settings.columns = 10;
 				settings.rows = 10;
 			}
@@ -69,9 +69,21 @@ void IntroController::handleEvent(sf::Event event)
 				if (settings.columns != 0 && settings.rows != 0 && settings.gameMode != DEBUG) finished = true;
 			}
 		}		
-	 	
+		draw();
+		if (event.type == sf::Event::MouseButtonPressed)
+		{
+			if (event.mouseButton.button == sf::Mouse::Left)
+			{
+				std::cout << "the right button was pressed" << std::endl;
+				
+			}
+		}
 }
 
+void IntroController::draw()
+{
+	introView.draw();
+}
 
 sSettings IntroController::getSettings()
 {

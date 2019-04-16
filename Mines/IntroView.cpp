@@ -3,16 +3,6 @@
 #include <cstdlib> // abort()
 
 
-void IntroView::setFillColorEasyMode()
-{
-	rect_easy_mode.setFillColor(sf::Color::Blue);
-}
-
-void IntroView::setFillColorSmallSize()
-{
-	rect_small_size.setFillColor(sf::Color::Blue);
-
-}
 
 IntroView::IntroView(sf::RenderWindow &renderWindow) : renderWindow(renderWindow) {
 	if (!font.loadFromFile("arial.ttf")) {
@@ -110,6 +100,18 @@ void IntroView::draw() {
 	renderWindow.draw(txt_normal_size);
 	renderWindow.draw(rect_big_size);
 	renderWindow.draw(txt_big_size);
+}
+
+
+void IntroView::setFillColorEasyMode()
+{
+	rect_easy_mode.setFillColor(sf::Color::Blue);
+}
+
+void IntroView::setFillColorSmallSize()
+{
+	rect_small_size.setFillColor(sf::Color::Blue);
+
 }
 
 sf::RenderWindow &IntroView::getWindow() const {

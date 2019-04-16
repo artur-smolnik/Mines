@@ -22,6 +22,6 @@ public:
 	sSettings getSettings();
 
 	// no need to change this
-	void draw() { introView.draw(); }
+	void draw();
 	bool isFinished() const { return finished; }
 };

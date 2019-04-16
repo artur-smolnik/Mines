@@ -23,7 +23,7 @@ int main()
 	
 	
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SAPER");
-	sf::Event event;
+	
 	
 	IntroView introView(window);
 	IntroController introController(introView);
@@ -48,14 +48,16 @@ int main()
 		
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
-				window.close();
+			if (event.type == sf::Event::Closed)window.close();
+				
 
 			//gameManager.handleEvent(event);
 			//graphicController.handleEvent();
-			
+			//gameManager.handleEvent(event);
+			//introController.handleEvent();
+			//introController.draw();
 		}
-
+		
 		
 		//gc.display();
 		window.clear();
@@ -63,9 +65,9 @@ int main()
 		//introController.handleEvent(event);
 		//graphicView.draw();
 		gameManager.handleEvent(event);
-
+		
 		window.display();
-		if (msb.getGameState() != RUNNING) std::cin.ignore();
+		//if (msb.getGameState() != RUNNING) std::cin.ignore();
 	}
 
 	std::cout << std::endl << "Koniec gry";
