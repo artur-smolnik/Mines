@@ -24,5 +24,6 @@ public:
 
 	std::vector<sf::RectangleShape> &getRectangles();
 	int getColumns();
+	void setColumns(int newColumns);
 };
 

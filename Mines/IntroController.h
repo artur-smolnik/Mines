@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "IntroView.h"
 #include "MinesweeperBoard.h"
+#include "GraphicView.h"
 
 struct sSettings {
 	int columns;
@@ -13,22 +14,18 @@ class IntroController {
 	bool finished = false;
 	IntroView & introView;
 	//MinesweeperBoard &minesweeperBoard;
-	
-	GameMode gm = DEBUG;
-	int cols =0, rows=0;
+	GraphicView &graphicView;
 	
 	sSettings settings;
-	// IntroModel & model;
+	
 public:
-	 IntroController(IntroView & introView);
+	IntroController(IntroView & introView, GraphicView &graphicView);
 
 	void handleEvent(sf::Event event);
 	sSettings getSettings();
 
 	// no need to change this
 	void draw();
-	bool isFinished() const { return finished; }
-	int getCols() { return cols; }
-	int getRows() { return rows; }
+	bool isFinished() const { return finished; }	
 	
 };

@@ -19,6 +19,7 @@ GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	std::cout << msb.getBoardWidth()  << std::endl;
 	this->size = 50;
 	this->gap = 5;
+
 	loadTextures();
 	setRectanglesVector();
 }
@@ -126,5 +127,10 @@ std::vector<sf::RectangleShape>& GraphicView::getRectangles()
 int GraphicView::getColumns()
 {
 	return columns;
+}
+
+void GraphicView::setColumns(int newColumns)
+{
+	 columns = newColumns;
 }
 
