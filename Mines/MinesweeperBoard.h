@@ -34,7 +34,6 @@ class MinesweeperBoard
 
 public:
 	MinesweeperBoard();
-	MinesweeperBoard(int width, int height, GameMode mode);
 	
 	int countMines(int x, int y) const;			
 	int getBoardWidth() const;
@@ -52,9 +51,7 @@ public:
 	void revealField(int x, int y);	
 	std::vector<mineCords> getMinesCords();  //additional func for stage5 
 
-	void setColumns(int columns);
-	void setRows(int rows);
-	void setGameMode(GameMode gameMode);
+	
 
 	void setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode);
 	

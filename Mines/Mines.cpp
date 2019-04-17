@@ -26,18 +26,20 @@ int main()
 	
 	IntroView introView(window);
 	
-	MinesweeperBoard msb(30, 30, HARD);
+	MinesweeperBoard msb;
 
 	GraphicView graphicView(msb, window);
 	IntroController introController(introView, graphicView, msb);
 	MinesweeperView minesweeperView(graphicView);
 	GraphicController graphicController(minesweeperView, graphicView, window, msb);
-	ScoreView scoreView;
+	ScoreView scoreView(window);
 	ScoreController scoreController(scoreView);
 	
 
 	GameManager gameManager(introController, graphicController, scoreController);
-
+	/*scoreView.draw();
+	window.display();
+	std::cin.ignore(2);*/
 		
 	while (window.isOpen())
 	{
@@ -46,22 +48,24 @@ int main()
 		
 		
 		
-		
+		//window.display();
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)window.close();
-				
-
-		
+			
+			window.display();
+			//introController.handleEvent(event);
+			scoreController.handleEvent(event);
+			window.display();
 		}
 		
 		
-		window.clear();
-
-		
-		gameManager.handleEvent(event);
 		
 		window.display();
+		window.clear();
+		//gameManager.handleEvent(event);
+		
+		
 		
 	}
 

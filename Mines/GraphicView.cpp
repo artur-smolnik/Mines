@@ -11,17 +11,11 @@ GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	:msb(msb),
 	renderWindow(renderWindow)
 {
-	this->x0 = 50;
-	this->y0 = 50;
-	/*this->columns = msb.getBoardWidth();
-	this->rows = msb.getBoardHeight();*/
-	
-	
-	this->size = 50;
+	this->x0 = 20;
+	this->y0 = 20;	
+	this->size = 20;
 	this->gap = 5;
-
-	/*loadTextures();
-	setRectanglesVector();*/
+	
 }
 
 void GraphicView::setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode)
@@ -29,6 +23,7 @@ void GraphicView::setWidthAndHeightAndGameMode(int width, int height, GameMode g
 	this->columns = width;
 	this->rows = height;
 	this->gameMode = gameMode;
+	
 	loadTextures();
 	setRectanglesVector();
 }

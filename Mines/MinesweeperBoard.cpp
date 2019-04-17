@@ -11,27 +11,13 @@
 using namespace std;
 
 
-MinesweeperBoard::MinesweeperBoard(int width = 0, int height = 0, GameMode mode = DEBUG)
-	: width(width),
-	height(height)
-{
-	/*this->width = width;
-	this->height = height;*/
-	this->gameState = RUNNING;
-	//this->gameMode = mode;
+MinesweeperBoard::MinesweeperBoard()
+{	
+	this->gameState = RUNNING;	
 	this->firstMove = true;
 	this->remainingMines = getMineCount();
-	/*setBoard();
-	setMinesAmount();
-	setMinesCords();
-	setMines();*/
-	//info = new char[6];
-
 }
 
-MinesweeperBoard::MinesweeperBoard()
-{
-}
 
 void MinesweeperBoard::setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode)
 {
@@ -247,21 +233,6 @@ void MinesweeperBoard::revealField(int x, int y)
 std::vector<MinesweeperBoard::mineCords> MinesweeperBoard::getMinesCords()
 {
 	return minesCords;
-}
-
-void MinesweeperBoard::setColumns(int columns)
-{
-	this->width = columns;
-}
-
-void MinesweeperBoard::setRows(int rows)
-{
-	this->height = rows;
-}
-
-void MinesweeperBoard::setGameMode(GameMode gameMode)
-{
-	this->gameMode = gameMode;
 }
 
 
