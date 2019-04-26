@@ -119,7 +119,7 @@ sf::RenderWindow &IntroView::getWindow() const {
 }
 
 
-const sf::RectangleShape &IntroView::getRect() const {
+ sf::RectangleShape &IntroView::getRect()  {
 	return rect;
 }
 
@@ -128,26 +128,26 @@ std::vector<sf::RectangleShape> &IntroView::getRectangles()
 	return rectangles;
 }
 
-const sf::RectangleShape &IntroView::getRect_easy_mode() const {
+ sf::RectangleShape &IntroView::getRect_easy_mode()  {
 	return rect_easy_mode;
 }
 
-const sf::RectangleShape &IntroView::getRect_normal_mode() const {
+ sf::RectangleShape &IntroView::getRect_normal_mode()  {
 	return rect_normal_mode;
 }
 
-const sf::RectangleShape &IntroView::getRect_hard_mode() const {
+ sf::RectangleShape &IntroView::getRect_hard_mode()  {
 	return rect_hard_mode;
 }
 
-const sf::RectangleShape &IntroView::getRect_small_size() const {
+ sf::RectangleShape &IntroView::getRect_small_size()  {
 	return rect_small_size;
 }
 
-const sf::RectangleShape &IntroView::getRect_normal_size() const {
+ sf::RectangleShape &IntroView::getRect_normal_size()  {
 	return rect_normal_size;
 }
 
-const sf::RectangleShape &IntroView::getRect_big_size() const {
+ sf::RectangleShape &IntroView::getRect_big_size()  {
 	return rect_big_size;
 }

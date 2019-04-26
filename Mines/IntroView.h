@@ -33,13 +33,13 @@ public:
 	sf::RenderWindow &getWindow() const;
 	
 	void draw();
-	const sf::RectangleShape &getRect_easy_mode() const;
-	const sf::RectangleShape &getRect_normal_mode() const;
-	const sf::RectangleShape &getRect_hard_mode() const;
-	const sf::RectangleShape &getRect() const;
-	const sf::RectangleShape &getRect_small_size() const;
-	const sf::RectangleShape &getRect_normal_size() const;
-	const sf::RectangleShape &getRect_big_size() const;
+	 sf::RectangleShape &getRect_easy_mode() ;
+	 sf::RectangleShape &getRect_normal_mode() ;
+	 sf::RectangleShape &getRect_hard_mode() ;
+	 sf::RectangleShape &getRect() ;
+	 sf::RectangleShape &getRect_small_size() ;
+	 sf::RectangleShape &getRect_normal_size() ;
+	 sf::RectangleShape &getRect_big_size() ;
 	void setFillColorEasyMode();
 	void setFillColorSmallSize();
 	

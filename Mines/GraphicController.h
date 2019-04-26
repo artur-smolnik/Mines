@@ -5,14 +5,14 @@
 class GraphicController
 {
 	bool finished = false;
-	MinesweeperView &minesweeperView;
+	//MinesweeperView &minesweeperView;
 	MinesweeperBoard &minesweeperBoard;
 	GraphicView &graphicView;
 	sf::RenderWindow & renderWindow;
 
 public:
 	GraphicController();
-	GraphicController(MinesweeperView & minesweeperView, GraphicView &graphicView, sf::RenderWindow & renderWindow, MinesweeperBoard &minesweeperBoard);
+	GraphicController(GraphicView &graphicView, sf::RenderWindow & renderWindow, MinesweeperBoard &minesweeperBoard);
 
 	void handleEvent();
 

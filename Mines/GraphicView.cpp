@@ -11,17 +11,10 @@ GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	:msb(msb),
 	renderWindow(renderWindow)
 {
-	this->x0 = 50;
-	this->y0 = 50;
-	/*this->columns = msb.getBoardWidth();
-	this->rows = msb.getBoardHeight();*/
-	
-	
-	this->size = 50;
-	this->gap = 5;
-
-	/*loadTextures();
-	setRectanglesVector();*/
+	this->x0 = 40;
+	this->y0 = 40;	
+	this->size = 40;
+	this->gap = 4;
 }
 
 void GraphicView::setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode)
@@ -35,7 +28,7 @@ void GraphicView::setWidthAndHeightAndGameMode(int width, int height, GameMode g
 
 void GraphicView::loadTextures()
 {
-	if (!texture_flag.loadFromFile("flaga.png"))std::cout << "ERROR flag";
+	if (!texture_flag.loadFromFile("flaga.jpg"))std::cout << "ERROR flag";
 	if (!texture_bomb.loadFromFile("bomb.jpg"))std::cout << "ERROR bomb";
 	if (!texture_0.loadFromFile("0.jpg"))std::cout << "ERROR 0";
 	if (!texture_1.loadFromFile("1.jpg"))std::cout << "ERROR 1";

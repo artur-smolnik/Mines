@@ -171,7 +171,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AdditionalFunctions.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GraphicController.h" />
     <ClInclude Include="GraphicView.h" />
@@ -188,7 +187,6 @@
     <ClInclude Include="ScoreView.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AdditionalFunctions.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GraphicController.cpp" />
     <ClCompile Include="GraphicView.cpp" />

@@ -1,9 +1,8 @@
 #include "pch.h"
 #include "GraphicController.h"
 
-GraphicController::GraphicController(MinesweeperView & minesweeperView, GraphicView & graphicView, sf::RenderWindow & renderWindow, MinesweeperBoard &minesweeperBoard)
-	:minesweeperView(minesweeperView),
-	graphicView(graphicView),
+GraphicController::GraphicController(GraphicView & graphicView, sf::RenderWindow & renderWindow, MinesweeperBoard &minesweeperBoard)
+	:graphicView(graphicView),
 	renderWindow(renderWindow),
 	minesweeperBoard(minesweeperBoard)
 {}
@@ -16,7 +15,7 @@ void GraphicController::handleEvent()
 		auto mouse_pos = sf::Mouse::getPosition(renderWindow); // Mouse position relative to the window
 		auto translated_pos = renderWindow.mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
 		if (graphicView.getRectangles()[i].getGlobalBounds().contains(translated_pos))
-		{                 // Rectangle-contains-point check
+		{                 
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
 				std::div_t divresult;

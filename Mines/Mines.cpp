@@ -21,7 +21,7 @@ int main()
 {
 	int x0 = 10, y0 = 10, columns = 4, rows = 2, size = 80, gap = 5;	
 	
-	sf::RenderWindow window(sf::VideoMode(1000, 1000), "SAPER");
+	sf::RenderWindow window(sf::VideoMode(1400, 1000), "SAPER");
 	
 	
 	IntroView introView(window);
@@ -31,7 +31,7 @@ int main()
 	GraphicView graphicView(msb, window);
 	IntroController introController(introView, graphicView, msb);
 	MinesweeperView minesweeperView(graphicView);
-	GraphicController graphicController(minesweeperView, graphicView, window, msb);
+	GraphicController graphicController(graphicView, window, msb);
 	ScoreView scoreView;
 	ScoreController scoreController(scoreView);
 	
@@ -42,10 +42,7 @@ int main()
 	while (window.isOpen())
 	{
 
-		sf::Event event;
-		
-		
-		
+		sf::Event event;		
 		
 		while (window.pollEvent(event))
 		{
