@@ -21,18 +21,18 @@ int main()
 {
 	int x0 = 10, y0 = 10, columns = 4, rows = 2, size = 80, gap = 5;	
 	
-	sf::RenderWindow window(sf::VideoMode(1400, 1000), "SAPER");
+	sf::RenderWindow window(sf::VideoMode(600, 500), "SAPER");
 	
 	
 	IntroView introView(window);
 	
-	MinesweeperBoard msb(30, 30, HARD);
+	MinesweeperBoard msb;
 
 	GraphicView graphicView(msb, window);
 	IntroController introController(introView, graphicView, msb);
 	MinesweeperView minesweeperView(graphicView);
 	GraphicController graphicController(graphicView, window, msb);
-	ScoreView scoreView;
+	ScoreView scoreView(window, msb);
 	ScoreController scoreController(scoreView);
 	
 

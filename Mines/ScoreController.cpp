@@ -1,8 +1,7 @@
 #include "pch.h"
 #include "ScoreController.h"
 
-ScoreController::ScoreController(ScoreView &scoreView) : scoreView(scoreView)
-{}
+ScoreController::ScoreController(ScoreView &scoreView) : scoreView(scoreView) {}
 
 void ScoreController::handleEvent(sf::Event &event) {
 	scoreView.draw();
