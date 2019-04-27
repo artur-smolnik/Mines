@@ -30,9 +30,6 @@
     <ClInclude Include="MSTextController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MSFMLView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IntroView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -75,9 +72,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MSTextController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MSFMLView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="IntroView.cpp">

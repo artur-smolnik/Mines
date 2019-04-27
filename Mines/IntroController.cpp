@@ -32,6 +32,8 @@ void IntroController::handleEvent(sf::Event event)
 				introView.getRect_easy_mode().setFillColor(sf::Color::Green);
 				introView.getRect_normal_mode().setFillColor(sf::Color::White);
 				introView.getRect_hard_mode().setFillColor(sf::Color::White);
+				
+
 			}
 		}
 		if (introView.getRect_normal_mode().getGlobalBounds().contains(translated_pos))

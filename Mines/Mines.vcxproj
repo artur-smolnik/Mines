@@ -179,7 +179,6 @@
     <ClInclude Include="MinesweeperBoard.h" />
     <ClInclude Include="MinesweeperView.h" />
     <ClInclude Include="MSBoardTextView.h" />
-    <ClInclude Include="MSFMLView.h" />
     <ClInclude Include="MSTextController.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Rectangle.h" />
@@ -196,7 +195,6 @@
     <ClCompile Include="MinesweeperBoard.cpp" />
     <ClCompile Include="MinesweeperView.cpp" />
     <ClCompile Include="MSBoardTextView.cpp" />
-    <ClCompile Include="MSFMLView.cpp" />
     <ClCompile Include="MSTextController.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

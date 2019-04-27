@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "GraphicController.h"
 
-GraphicController::GraphicController(GraphicView & graphicView, sf::RenderWindow & renderWindow, MinesweeperBoard &minesweeperBoard)
+GraphicController::GraphicController(GraphicView &graphicView, sf::RenderWindow &renderWindow, MinesweeperBoard &minesweeperBoard)
 	:graphicView(graphicView),
 	renderWindow(renderWindow),
 	minesweeperBoard(minesweeperBoard)

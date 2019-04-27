@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "SFML/Graphics.hpp"
 #include "GraphicView.h"
 #include <iostream>
 #include <vector>
@@ -11,20 +12,34 @@ GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	:msb(msb),
 	renderWindow(renderWindow)
 {
-	this->x0 = 40;
-	this->y0 = 40;	
-	this->size = 40;
-	this->gap = 4;
+	x0 = 25;
+	y0 = 25;	
+	size = 40;
+	gap = 4;
 }
 
 void GraphicView::setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode)
 {
-	this->columns = width;
-	this->rows = height;
+	columns = width;
+	rows = height;
 	this->gameMode = gameMode;
+	setWindowSize();
 	loadTextures();
 	setRectanglesVector();
 }
+
+void GraphicView::setWindowSize()
+{
+	int x, y;
+	x = columns * size + 2 * x0 + (columns - 1)*gap;
+	y = rows * size + 2 * y0 + (rows - 1)*gap;	
+	sf::View view;
+	view.setSize(renderWindow.getSize().x, renderWindow.getSize().y);
+	renderWindow.setView(view);
+	renderWindow.create(sf::VideoMode(x, y), "SAPER");	
+
+}
+
 
 void GraphicView::loadTextures()
 {

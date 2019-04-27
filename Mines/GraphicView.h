@@ -15,6 +15,7 @@ class GraphicView
 
 	void loadTextures();
 	void setRectanglesVector();
+	void setWindowSize();
 
 public:
 	GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow);
