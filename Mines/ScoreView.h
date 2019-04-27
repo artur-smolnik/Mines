@@ -3,9 +3,16 @@
 
 class ScoreView {
 	sf::RectangleShape rect;
-public:
-	ScoreView();
+	sf::Font font;
+	sf::RenderWindow &renderWindow;
+	sf::Text txt;
 
-	void draw(sf::RenderWindow &win);
+public:
+	ScoreView(sf::RenderWindow &renderWindow);
+
+	void draw();
+	sf::RenderWindow &getWindow() { return renderWindow; };
+
+	sf::RectangleShape getRectExit() { return rect; }
 };
 

@@ -115,7 +115,7 @@ void IntroView::setFillColorSmallSize()
 }
 
 sf::RenderWindow &IntroView::getWindow() const {
-	return renderWindow;;
+	return renderWindow;
 }
 
 

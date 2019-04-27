@@ -44,13 +44,13 @@ void GameManager::draw(sf::RenderWindow &win) {
 	updateState();
 	switch (state) {
 	case INTRO:
-		introController.draw();
+		//introController.draw();
 		break;
 	case GAME:
 		//minesweeperController.draw(win);
 		break;
 	case SCORE:
-		scoreController.draw(win);
+		//scoreController.draw();
 		break;
 	}
 }

@@ -4,13 +4,13 @@
 
 class ScoreController {
 	bool finished = false;
-	ScoreView & view;
+	ScoreView &scoreView;
 public:
-	explicit ScoreController(ScoreView & v);
+	explicit ScoreController(ScoreView &scoreView);
 	void handleEvent(sf::Event &event);
 
 	// no need to change this
-	void draw(sf::RenderWindow & win) { view.draw(win); }
+	void draw();
 	bool isFinished() const { return finished; }
 };
 
