@@ -19,6 +19,7 @@
 
 int main()
 {
+	srand(time(NULL));
 	int x0 = 10, y0 = 10, columns = 4, rows = 2, size = 80, gap = 5;	
 	
 	sf::RenderWindow window(sf::VideoMode(600, 500), "SAPER");

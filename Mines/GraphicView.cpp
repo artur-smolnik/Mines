@@ -12,6 +12,7 @@ GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	:msb(msb),
 	renderWindow(renderWindow)
 {
+	//gameMode = DEBUG;
 	x0 = 25;
 	y0 = 25;	
 	size = 40;
@@ -23,9 +24,27 @@ void GraphicView::setWidthAndHeightAndGameMode(int width, int height, GameMode g
 	columns = width;
 	rows = height;
 	this->gameMode = gameMode;
+	rectangles.clear();
 	setWindowSize();
 	loadTextures();
 	setRectanglesVector();
+	/*columns = width;
+	rows = height;
+	if (gameMode != DEBUG)
+	{
+		this->gameMode = gameMode;
+		setWindowSize();
+		rectangles.clear();
+		setRectanglesVector();
+	}
+	else
+	{
+		this->gameMode = gameMode;
+		setWindowSize();
+		loadTextures();
+		setRectanglesVector();
+	}*/
+	
 }
 
 void GraphicView::setWindowSize()
