@@ -7,14 +7,18 @@ GraphicController::GraphicController(GraphicView &graphicView, sf::RenderWindow 
 	minesweeperBoard(minesweeperBoard)
 {}
 
+void GraphicController::draw()
+{
+	graphicView.draw();
+}
+
 void GraphicController::handleEvent()
 {
 
-	graphicView.draw();
 	for (int i = 0; i < graphicView.getRectangles().size(); i++)
 	{
-		auto mouse_pos = sf::Mouse::getPosition(renderWindow); // Mouse position relative to the window
-		auto translated_pos = renderWindow.mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
+		auto mouse_pos = sf::Mouse::getPosition(renderWindow); // those two lines can be found on sfml forum 
+		auto translated_pos = renderWindow.mapPixelToCoords(mouse_pos); 
 		if (graphicView.getRectangles()[i].getGlobalBounds().contains(translated_pos))
 		{                 
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))

@@ -8,12 +8,10 @@ ScoreController::ScoreController(ScoreView &scoreView) : scoreView(scoreView)
 	 finished = false;	 
 }
 
-void ScoreController::handleEvent() {
-	scoreView.draw();
-	
+void ScoreController::handleEvent() {	
 
-	auto mouse_pos = sf::Mouse::getPosition(scoreView.getWindow()); // those two lines found on sfml forum 
-	auto translated_pos = scoreView.getWindow().mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
+	auto mouse_pos = sf::Mouse::getPosition(scoreView.getWindow());         // those two lines can be found on sfml forum 
+	auto translated_pos = scoreView.getWindow().mapPixelToCoords(mouse_pos); 
 
 	if (scoreView.getRectExit().getGlobalBounds().contains(translated_pos)) {
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
@@ -34,4 +32,5 @@ void ScoreController::handleEvent() {
 
 void ScoreController::draw()
 {
+	scoreView.draw();
 }

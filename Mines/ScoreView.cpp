@@ -10,10 +10,7 @@ ScoreView::ScoreView(sf::RenderWindow &renderWindow, MinesweeperBoard &minesweep
 
 	if (!font.loadFromFile("arial.ttf")) {
 		abort();
-	}
-	
-
-	
+	}	
 }
 
 void ScoreView::draw() 
@@ -41,7 +38,7 @@ void ScoreView::draw()
 	
 	if (minesweeperBoard.getGameState() == FINISHED_LOSS)
 	{
-		txt.setString("YOU LOST! " + std::to_string(minesweeperBoard.getMineCount()) + " MINES REMAMINED!");
+		txt.setString("YOU LOST! " + std::to_string(minesweeperBoard.getMineCount()) + " MINES REMAINED!");
 	}
 	else if (minesweeperBoard.getGameState() == FINISHED_WIN)
 	{		

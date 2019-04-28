@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "IntroView.h"
-#include <cstdlib> // abort()
+#include <cstdlib> 
 
 
 

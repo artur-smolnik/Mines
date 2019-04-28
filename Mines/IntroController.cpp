@@ -21,8 +21,8 @@ IntroController::IntroController(IntroView &introView, GraphicView &graphicView,
 void IntroController::handleEvent()
 {		
 		
-		auto mouse_pos = sf::Mouse::getPosition(introView.getWindow()); // Mouse position relative to the window
-		auto translated_pos = introView.getWindow().mapPixelToCoords(mouse_pos); // Mouse position translated into world coordinates
+		auto mouse_pos = sf::Mouse::getPosition(introView.getWindow());  // those two lines can be found on sfml forum 
+		auto translated_pos = introView.getWindow().mapPixelToCoords(mouse_pos);
 		
 		if (introView.getRect_easy_mode().getGlobalBounds().contains(translated_pos))
 		{
@@ -106,7 +106,7 @@ void IntroController::handleEvent()
 		}		
 		
 
-		introView.draw();
+		
 }
 
 
@@ -114,4 +114,9 @@ void IntroController::handleEvent()
 sSettings IntroController::getSettings()
 {
 	return settings;
+}
+
+void IntroController::draw()
+{
+	introView.draw();
 }

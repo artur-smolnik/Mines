@@ -1,13 +1,11 @@
 #include "pch.h"
 #include "MSTextController.h"
-//#include <cstdlib>
 #include "conio.h"
 #include <iostream>
 
 using namespace std;
 
 
-//MSTextController::MSTextController(){}
 
 MSTextController::MSTextController(MinesweeperBoard &msb, MSBoardTextView &msbtv)
 	:msbtv(msbtv), minesweeperBoard(msb) {}
@@ -92,11 +90,11 @@ void MSTextController::move()
 
 	if (minesweeperBoard.getGameState() == FINISHED_LOSS)
 	{
-		cout << endl << endl << "ZJEBALES";
+		cout << endl << endl << "YOU LOST!";
 	}
 	else
 	{
-		cout << endl << endl << "KURWA WYGRANKO";
+		cout << endl << endl << "YOU WON";
 	}
 }
 

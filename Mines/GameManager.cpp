@@ -53,13 +53,13 @@ void GameManager::draw() {
 	updateState();
 	switch (state) {
 	case INTRO:
-		//introController.draw();
+		introController.draw();
 		break;
 	case GAME:
-		//minesweeperController.draw(win);
+		graphicController.draw();
 		break;
 	case SCORE:
-		//scoreController.draw();
+		scoreController.draw();
 		break;
 	}
 }

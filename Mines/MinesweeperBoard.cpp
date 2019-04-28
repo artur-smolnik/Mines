@@ -4,7 +4,7 @@
 #include "MinesweeperBoard.h"
 
 
-#ifndef MINESBOARD_H__
+#ifndef MINESBOARD_H__  // in other classes im using #pragma once because it's generated automatically in visual studio 
 #define MINESBOARD_H__
 
 
@@ -20,11 +20,7 @@ MinesweeperBoard::MinesweeperBoard()
 
 
 void MinesweeperBoard::setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode)
-{	
-	
-	
-	
-	
+{		
 	this->firstMove = true;
 	minesCords.clear();
 	this->width = width;
@@ -37,8 +33,8 @@ void MinesweeperBoard::setWidthAndHeightAndGameMode(int width, int height, GameM
 	this->remainingMines = getMineCount();
 }
 
-
-void MinesweeperBoard::setMinesCords()  //fills vector of cords with new coordinates
+//fills vector of cords with new coordinates
+void MinesweeperBoard::setMinesCords()  
 {
 	int cordX, cordY;
 	for (int i = 0; i < minesAmount; i++)
@@ -56,7 +52,8 @@ void MinesweeperBoard::setMinesCords()  //fills vector of cords with new coordin
 	}
 }
 
-void MinesweeperBoard::setMinesCordsFirstMove(int x, int y)  // used in revealField while  first turn user picks a field with a mine 
+// used in revealField while  first turn user picks a field with a mine 
+void MinesweeperBoard::setMinesCordsFirstMove(int x, int y)  
 {
 	int cordY, cordX, tmp;
 	do {
@@ -82,8 +79,8 @@ void MinesweeperBoard::setMinesCordsFirstMove(int x, int y)  // used in revealFi
 	}
 }
 
-
-void MinesweeperBoard::setMines() {  // makes hasMine true according to the vector cords data
+// makes hasMine true according to the vector minesCords data
+void MinesweeperBoard::setMines() {  
 
 	if (gameMode != DEBUG)
 	{
@@ -111,8 +108,8 @@ void MinesweeperBoard::setMines() {  // makes hasMine true according to the vect
 
 }
 
-
-void MinesweeperBoard::setBoard()  // fills board with all fields' members set to false
+// fills board with all fields' members set to false
+void MinesweeperBoard::setBoard()  
 {
 	for (int i = 0; i < height; i++)
 	{
@@ -126,8 +123,8 @@ void MinesweeperBoard::setBoard()  // fills board with all fields' members set t
 }
 
 
-
-void MinesweeperBoard::setMinesAmount()  // evaluates number of traps in our game
+// evaluates number of traps in our game
+void MinesweeperBoard::setMinesAmount()  
 {
 	if (gameMode != DEBUG)
 	{
@@ -286,15 +283,10 @@ GameState MinesweeperBoard::getGameState()
 		for (int j = 0; j < width; j++)
 		{
 			if (board[j][i].isRevealed && board[j][i].hasMine) return FINISHED_LOSS;
-			//if (board[j][i].isRevealed) revealedFields++;
+			
 		}
-	}
-	//if (revealedFields == (height*width) - getMineCount()) return FINISHED_WIN;
-
+	}	
 	return RUNNING;
 
 }
-
-
-
 #endif

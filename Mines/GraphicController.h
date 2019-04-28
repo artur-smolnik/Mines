@@ -12,7 +12,7 @@ class GraphicController
 public:
 	GraphicController();
 	GraphicController(GraphicView &graphicView, sf::RenderWindow & renderWindow, MinesweeperBoard &minesweeperBoard);
-
+	void draw();
 	void handleEvent();	
 	bool isFinished() const;
 	void setFinishedToFalse() { finished = false; }

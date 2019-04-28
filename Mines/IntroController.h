@@ -23,7 +23,7 @@ public:
 	void handleEvent();
 	sSettings getSettings();
 
-	
+	void draw();
 	bool isFinished() const { return finished; }	
 	void setFinishedToFalse() { finished = false; }
 	
