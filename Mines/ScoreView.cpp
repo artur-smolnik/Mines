@@ -24,7 +24,7 @@ void ScoreView::draw()
 		sf::View view;
 		view.setSize(renderWindow.getSize().x, renderWindow.getSize().y);
 		renderWindow.setView(view);
-		renderWindow.create(sf::VideoMode(500, 500), "SAPER");
+		renderWindow.create(sf::VideoMode(600, 500), "SAPER");
 		isWindowSet = true;
 		//renderWindow.setView(view);
 	}
@@ -55,11 +55,11 @@ void ScoreView::draw()
 
 
 	rect_exit.setSize(sf::Vector2f(100, 50));
-	rect_exit.setPosition(195, 190);
+	rect_exit.setPosition(250, 190);
 	rect_exit.setFillColor(sf::Color::Green);
 	txt.setFont(font);
 	txt.setString("EXIT");
-	txt.setPosition(220, 200);
+	txt.setPosition(275, 200);
 	txt.setFillColor(sf::Color::Red);
 	txt.setCharacterSize(20);
 
@@ -67,11 +67,11 @@ void ScoreView::draw()
 	renderWindow.draw(txt);
 
 	rect_play_again.setSize(sf::Vector2f(150, 50));
-	rect_play_again.setPosition(170, 300);//setPosition(195, 100);
+	rect_play_again.setPosition(225, 300);//setPosition(195, 100);
 	rect_play_again.setFillColor(sf::Color::Green);
 	txt.setFont(font);
 	txt.setString("PLAY AGAIN");
-	txt.setPosition(180, 310);
+	txt.setPosition(235, 310);
 	txt.setFillColor(sf::Color::Red);
 	txt.setCharacterSize(20);
 

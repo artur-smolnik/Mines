@@ -2,10 +2,7 @@
 #include "GameManager.h"
 #include "ScoreController.h"
 
-void GameManager::playAgain(bool playAgain)
-{
-	if (playAgain) state = INTRO;
-}
+
 GameManager::GameManager(IntroController &ic , GraphicController &mc, ScoreController &sc)
 	: introController(ic), graphicController(mc), scoreController(sc)
 {

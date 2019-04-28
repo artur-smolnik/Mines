@@ -13,9 +13,9 @@ class GameManager {
 	} state;
 
 	void updateState();
-	void playAgain(bool playAgain);
+	
 public:
-	//GameManager(IntroController &ic, MinesweeperController &mc, ScoreController &sc);
+	
 	GameManager(IntroController &ic, GraphicController &mc, ScoreController &sc);
 
 	void draw(sf::RenderWindow &win);
