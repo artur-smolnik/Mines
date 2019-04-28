@@ -22,8 +22,7 @@ void ScoreView::draw()
 		view.setSize(renderWindow.getSize().x, renderWindow.getSize().y);
 		renderWindow.setView(view);
 		renderWindow.create(sf::VideoMode(600, 500), "SAPER");
-		isWindowSet = true;
-		//renderWindow.setView(view);
+		isWindowSet = true;		
 	}
 	int flagsAmount = 0;
 	for (int i = 0; i < minesweeperBoard.getBoardHeight(); i++)

@@ -5,13 +5,12 @@
 class GraphicController
 {	
 	MinesweeperBoard &minesweeperBoard;
-	GraphicView &graphicView;
-	sf::RenderWindow & renderWindow;
+	GraphicView &graphicView;	
 	bool finished = false;
 
 public:
 	GraphicController();
-	GraphicController(GraphicView &graphicView, sf::RenderWindow & renderWindow, MinesweeperBoard &minesweeperBoard);
+	GraphicController(GraphicView &graphicView, MinesweeperBoard &minesweeperBoard);
 	void draw();
 	void handleEvent();	
 	bool isFinished() const;

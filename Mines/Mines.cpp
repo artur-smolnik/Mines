@@ -29,7 +29,7 @@ int main()
 	GraphicView graphicView(msb, window);
 	IntroController introController(introView, graphicView, msb);
 	MinesweeperView minesweeperView(graphicView);
-	GraphicController graphicController(graphicView, window, msb);
+	GraphicController graphicController(graphicView, msb);
 	ScoreView scoreView(window, msb);
 	ScoreController scoreController(scoreView);
 	GameManager gameManager(introController, graphicController, scoreController);

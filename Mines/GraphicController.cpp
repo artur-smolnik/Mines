@@ -1,9 +1,8 @@
 #include "pch.h"
 #include "GraphicController.h"
 
-GraphicController::GraphicController(GraphicView &graphicView, sf::RenderWindow &renderWindow, MinesweeperBoard &minesweeperBoard)
-	:graphicView(graphicView),
-	renderWindow(renderWindow),
+GraphicController::GraphicController(GraphicView &graphicView, MinesweeperBoard &minesweeperBoard)
+	:graphicView(graphicView),	
 	minesweeperBoard(minesweeperBoard)
 {}
 
@@ -17,13 +16,13 @@ void GraphicController::handleEvent()
 
 	for (int i = 0; i < graphicView.getRectangles().size(); i++)
 	{
-		auto mouse_pos = sf::Mouse::getPosition(renderWindow); // those two lines can be found on sfml forum 
-		auto translated_pos = renderWindow.mapPixelToCoords(mouse_pos); 
+		auto mouse_pos = sf::Mouse::getPosition(graphicView.getWindow());                // those two lines can be found on sfml forum 
+		auto translated_pos = graphicView.getWindow().mapPixelToCoords(mouse_pos);
 		if (graphicView.getRectangles()[i].getGlobalBounds().contains(translated_pos))
 		{                 
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
-				std::div_t divresult;
+				std::div_t divresult;  //integer div and modulo div finds right field on main minesweeper board according to selected graphic rectangle on grid
 				divresult = std::div(i, graphicView.getColumns());
 				minesweeperBoard.revealField(i % graphicView.getColumns(), divresult.quot);
 			}

@@ -24,7 +24,7 @@ public:
 	//assigns appropiate texture to each field on the grid
 	void display();
 	void draw();
-
+	sf::RenderWindow &getWindow() { return renderWindow; };
 	std::vector<sf::RectangleShape> &getRectangles();
 	int getColumns();
 	void setColumns(int newColumns);

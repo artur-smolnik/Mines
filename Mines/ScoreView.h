@@ -8,7 +8,7 @@ class ScoreView {
 	sf::Font font;
 	sf::RenderWindow &renderWindow;
 	sf::Text txt;
-	bool isWindowSet;
+	bool isWindowSet; //prevent from window flickering
 	MinesweeperBoard &minesweeperBoard;
 
 public:
