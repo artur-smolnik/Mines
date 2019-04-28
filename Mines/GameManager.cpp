@@ -3,7 +3,7 @@
 
 
 
-GameManager::GameManager(IntroController &ic , GraphicController &mc, ScoreController &sc)
+GameManager::GameManager(IntroController &ic , MSSFMLController &mc, ScoreController &sc)
 	: introController(ic), graphicController(mc), scoreController(sc)
 {
 	state = INTRO;

@@ -9,13 +9,12 @@
 #include "MinesweeperBoard.h"
 #include "IntroView.h"
 #include "IntroController.h"
-#include "MinesweeperView.h"
-#include "GraphicController.h"
+#include "MSSFMLController.h"
 #include "ScoreView.h"
 #include "ScoreController.h"
 #include "GameManager.h"
 
-#include "GraphicView.h"
+#include "MSSFMLView.h"
 
 int main()
 {
@@ -26,10 +25,9 @@ int main()
 	
 	IntroView introView(window);	
 	MinesweeperBoard msb;
-	GraphicView graphicView(msb, window);
-	IntroController introController(introView, graphicView, msb);
-	MinesweeperView minesweeperView(graphicView);
-	GraphicController graphicController(graphicView, msb);
+	MSSFMLView mSSFMLView(msb, window);
+	IntroController introController(introView, mSSFMLView, msb);
+	MSSFMLController graphicController(mSSFMLView, msb);
 	ScoreView scoreView(window, msb);
 	ScoreController scoreController(scoreView);
 	GameManager gameManager(introController, graphicController, scoreController);

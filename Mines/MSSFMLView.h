@@ -2,7 +2,7 @@
 #include "MinesweeperBoard.h"
 #include <string>
 #include <SFML/Graphics.hpp>
-class GraphicView
+class MSSFMLView
 {
 	int x0, y0, columns, rows, size, gap;
 
@@ -19,7 +19,7 @@ class GraphicView
 	void setWindowSize();
 
 public:
-	GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow);
+	MSSFMLView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow);
 	
 	//assigns appropiate texture to each field on the grid
 	void display();

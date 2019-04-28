@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "IntroView.h"
 #include "MinesweeperBoard.h"
-#include "GraphicView.h"
+#include "MSSFMLView.h"
 
 struct sSettings {
 	int columns;
@@ -14,11 +14,11 @@ class IntroController {
 	bool finished = false;
 	IntroView & introView;
 	MinesweeperBoard &minesweeperBoard;
-	GraphicView &graphicView;	
+	MSSFMLView &mSSFMLView;	
 	sSettings settings;
 	
 public:
-	IntroController(IntroView & introView, GraphicView &graphicView, MinesweeperBoard &minesweeperBoard);
+	IntroController(IntroView & introView, MSSFMLView &mSSFMLView, MinesweeperBoard &minesweeperBoard);
 
 	void handleEvent();
 	sSettings getSettings();

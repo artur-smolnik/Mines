@@ -42,13 +42,10 @@
     <ClInclude Include="ScoreView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MinesweeperView.h">
+    <ClInclude Include="MSSFMLView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicController.h">
+    <ClInclude Include="MSSFMLController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -81,9 +78,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ScoreView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MinesweeperView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GraphicView.cpp">

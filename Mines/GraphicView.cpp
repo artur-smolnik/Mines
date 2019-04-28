@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "SFML/Graphics.hpp"
-#include "GraphicView.h"
+#include "MSSFMLView.h"
 #include <iostream>
 #include <vector>
 #include "MinesweeperBoard.h"
@@ -8,7 +8,7 @@
 
 
 
-GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
+MSSFMLView::MSSFMLView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	:msb(msb),
 	renderWindow(renderWindow)
 {
@@ -19,7 +19,7 @@ GraphicView::GraphicView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	gap = 4;
 }
 
-void GraphicView::setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode)
+void MSSFMLView::setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode)
 {
 	columns = width;
 	rows = height;
@@ -47,7 +47,7 @@ void GraphicView::setWidthAndHeightAndGameMode(int width, int height, GameMode g
 	
 }
 
-void GraphicView::setWindowSize()
+void MSSFMLView::setWindowSize()
 {
 	int x, y;
 	x = columns * size + 2 * x0 + (columns - 1)*gap;
@@ -60,7 +60,7 @@ void GraphicView::setWindowSize()
 }
 
 
-void GraphicView::loadTextures()
+void MSSFMLView::loadTextures()
 {
 	if (!texture_flag.loadFromFile("flaga.jpg"))std::cout << "ERROR flag";
 	if (!texture_bomb.loadFromFile("bomb.jpg"))std::cout << "ERROR bomb";
@@ -75,7 +75,7 @@ void GraphicView::loadTextures()
 	if (!texture_8.loadFromFile("8.jpg"))std::cout << "ERROR 8";
 }
 
-void GraphicView::setRectanglesVector()
+void MSSFMLView::setRectanglesVector()
 {
 	for (int i = 0; i < rows; i++)
 	{
@@ -89,7 +89,7 @@ void GraphicView::setRectanglesVector()
 }
 
 
-void GraphicView::display()
+void MSSFMLView::display()
 {
 	for (int i = 0; i < columns*rows; i++)
 	{
@@ -146,7 +146,7 @@ void GraphicView::display()
 	}
 }
 
-void GraphicView::draw()
+void MSSFMLView::draw()
 {
 	display();
 	for (int i = 0; i < rectangles.size(); i++)
@@ -155,17 +155,17 @@ void GraphicView::draw()
 	}
 }
 
-std::vector<sf::RectangleShape>& GraphicView::getRectangles()
+std::vector<sf::RectangleShape>& MSSFMLView::getRectangles()
 {
 	return rectangles;
 }
 
-int GraphicView::getColumns()
+int MSSFMLView::getColumns()
 {
 	return columns;
 }
 
-void GraphicView::setColumns(int newColumns)
+void MSSFMLView::setColumns(int newColumns)
 {
 	 columns = newColumns;
 }

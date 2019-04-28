@@ -1,43 +1,41 @@
 #include "pch.h"
-#include "GraphicController.h"
+#include "MSSFMLController.h"
 
-GraphicController::GraphicController(GraphicView &graphicView, MinesweeperBoard &minesweeperBoard)
-	:graphicView(graphicView),	
+MSSFMLController::MSSFMLController(MSSFMLView &mSSFMLView, MinesweeperBoard &minesweeperBoard)
+	:mSSFMLView(mSSFMLView),
 	minesweeperBoard(minesweeperBoard)
 {}
 
-void GraphicController::draw()
+void MSSFMLController::draw()
 {
-	graphicView.draw();
+	mSSFMLView.draw();
 }
 
-void GraphicController::handleEvent()
+void MSSFMLController::handleEvent()
 {
-
-	for (int i = 0; i < graphicView.getRectangles().size(); i++)
+	for (int i = 0; i < mSSFMLView.getRectangles().size(); i++)
 	{
-		auto mouse_pos = sf::Mouse::getPosition(graphicView.getWindow());                // those two lines can be found on sfml forum 
-		auto translated_pos = graphicView.getWindow().mapPixelToCoords(mouse_pos);
-		if (graphicView.getRectangles()[i].getGlobalBounds().contains(translated_pos))
+		auto mouse_pos = sf::Mouse::getPosition(mSSFMLView.getWindow());                // those two lines can be found on sfml forum 
+		auto translated_pos = mSSFMLView.getWindow().mapPixelToCoords(mouse_pos);
+		if (mSSFMLView.getRectangles()[i].getGlobalBounds().contains(translated_pos))
 		{                 
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
 				std::div_t divresult;  //integer div and modulo div finds right field on main minesweeper board according to selected graphic rectangle on grid
-				divresult = std::div(i, graphicView.getColumns());
-				minesweeperBoard.revealField(i % graphicView.getColumns(), divresult.quot);
+				divresult = std::div(i, mSSFMLView.getColumns());
+				minesweeperBoard.revealField(i % mSSFMLView.getColumns(), divresult.quot);
 			}
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
 			{
 				std::div_t divresult;
-				divresult = std::div(i, graphicView.getColumns());
-				minesweeperBoard.toggleFlag(i % graphicView.getColumns(), divresult.quot);
+				divresult = std::div(i, mSSFMLView.getColumns());
+				minesweeperBoard.toggleFlag(i % mSSFMLView.getColumns(), divresult.quot);
 			}
 		}
-	}
-		
+	}		
 }
 
-bool GraphicController::isFinished() const 
+bool MSSFMLController::isFinished() const 
 {
 	if (minesweeperBoard.getGameState() != RUNNING) return true;
 	else return false;

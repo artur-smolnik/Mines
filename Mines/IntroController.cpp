@@ -4,11 +4,11 @@
 #include <vector>
 #include <iostream>
 
-IntroController::IntroController(IntroView &introView, GraphicView &graphicView, MinesweeperBoard &minesweeperBoard)
+IntroController::IntroController(IntroView &introView, MSSFMLView &mSSFMLView, MinesweeperBoard &minesweeperBoard)
 
 //IntroController::IntroController(IntroView &introView, MinesweeperBoard &minesweeperBoard)
 	: introView(introView),
-	graphicView(graphicView),
+	mSSFMLView(mSSFMLView),
 	minesweeperBoard(minesweeperBoard)
 	
 {
@@ -98,7 +98,7 @@ void IntroController::handleEvent()
 				if (settings.columns != 0 && settings.rows != 0 && settings.gameMode != DEBUG)
 				{					
 					minesweeperBoard.setWidthAndHeightAndGameMode(settings.columns, settings.rows, settings.gameMode);
-					graphicView.setWidthAndHeightAndGameMode(settings.columns, settings.rows, settings.gameMode);
+					mSSFMLView.setWidthAndHeightAndGameMode(settings.columns, settings.rows, settings.gameMode);
 					
 					finished = true;
 				}

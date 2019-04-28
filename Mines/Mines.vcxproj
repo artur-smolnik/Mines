@@ -172,12 +172,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h" />
-    <ClInclude Include="GraphicController.h" />
-    <ClInclude Include="GraphicView.h" />
+    <ClInclude Include="MSSFMLController.h" />
+    <ClInclude Include="MSSFMLView.h" />
     <ClInclude Include="IntroController.h" />
     <ClInclude Include="IntroView.h" />
     <ClInclude Include="MinesweeperBoard.h" />
-    <ClInclude Include="MinesweeperView.h" />
     <ClInclude Include="MSBoardTextView.h" />
     <ClInclude Include="MSTextController.h" />
     <ClInclude Include="pch.h" />
@@ -192,7 +191,6 @@
     <ClCompile Include="IntroView.cpp" />
     <ClCompile Include="Mines.cpp" />
     <ClCompile Include="MinesweeperBoard.cpp" />
-    <ClCompile Include="MinesweeperView.cpp" />
     <ClCompile Include="MSBoardTextView.cpp" />
     <ClCompile Include="MSTextController.cpp" />
     <ClCompile Include="pch.cpp">

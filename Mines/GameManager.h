@@ -1,11 +1,11 @@
 #pragma once
 #include "IntroController.h"
 #include "ScoreController.h"
-#include "GraphicController.h"
+#include "MSSFMLController.h"
 
 class GameManager {
 	IntroController &introController;
-	GraphicController &graphicController;
+	MSSFMLController &graphicController;
 	ScoreController &scoreController;
 
 	enum GameState {
@@ -16,7 +16,7 @@ class GameManager {
 	
 public:
 	
-	GameManager(IntroController &ic, GraphicController &mc, ScoreController &sc);
+	GameManager(IntroController &ic, MSSFMLController &mc, ScoreController &sc);
 
 	void draw();
 	void handleEvent();

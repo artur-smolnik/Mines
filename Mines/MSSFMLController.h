@@ -1,16 +1,16 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-#include "MinesweeperView.h"
 #include "MinesweeperBoard.h"
-class GraphicController
+#include "MSSFMLView.h"
+class MSSFMLController
 {	
 	MinesweeperBoard &minesweeperBoard;
-	GraphicView &graphicView;	
+	MSSFMLView &mSSFMLView;	
 	bool finished = false;
 
 public:
-	GraphicController();
-	GraphicController(GraphicView &graphicView, MinesweeperBoard &minesweeperBoard);
+	MSSFMLController();
+	MSSFMLController(MSSFMLView &mSSFMLView, MinesweeperBoard &minesweeperBoard);
 	void draw();
 	void handleEvent();	
 	bool isFinished() const;
