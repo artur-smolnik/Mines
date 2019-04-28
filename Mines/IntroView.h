@@ -30,17 +30,15 @@ class IntroView {
 public:
 	IntroView(sf::RenderWindow &renderWindow);
 	std::vector<sf::RectangleShape> &getRectangles();
-	sf::RenderWindow &getWindow() const;
-	
+	sf::RenderWindow &getWindow() const;	
+	sf::RectangleShape &getRect_easy_mode() ;
+	sf::RectangleShape &getRect_normal_mode() ;
+	sf::RectangleShape &getRect_hard_mode() ;
+	sf::RectangleShape &getRect() ;
+	sf::RectangleShape &getRect_small_size() ;
+	sf::RectangleShape &getRect_normal_size() ;
+	sf::RectangleShape &getRect_big_size() ;
 	void draw();
-	 sf::RectangleShape &getRect_easy_mode() ;
-	 sf::RectangleShape &getRect_normal_mode() ;
-	 sf::RectangleShape &getRect_hard_mode() ;
-	 sf::RectangleShape &getRect() ;
-	 sf::RectangleShape &getRect_small_size() ;
-	 sf::RectangleShape &getRect_normal_size() ;
-	 sf::RectangleShape &getRect_big_size() ;
-	void setFillColorEasyMode();
-	void setFillColorSmallSize();
+	
 	
 };

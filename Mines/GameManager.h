@@ -18,7 +18,7 @@ public:
 	
 	GameManager(IntroController &ic, GraphicController &mc, ScoreController &sc);
 
-	void draw(sf::RenderWindow &win);
+	void draw();
 	void handleEvent();
 	
 

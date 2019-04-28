@@ -9,7 +9,8 @@ GraphicController::GraphicController(GraphicView &graphicView, sf::RenderWindow 
 
 void GraphicController::handleEvent()
 {
-	draw(renderWindow);
+
+	graphicView.draw();
 	for (int i = 0; i < graphicView.getRectangles().size(); i++)
 	{
 		auto mouse_pos = sf::Mouse::getPosition(renderWindow); // Mouse position relative to the window
@@ -31,11 +32,6 @@ void GraphicController::handleEvent()
 		}
 	}
 		
-}
-
-void GraphicController::draw(sf::RenderWindow & win)
-{
-	graphicView.draw();
 }
 
 bool GraphicController::isFinished() const 

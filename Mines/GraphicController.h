@@ -3,21 +3,17 @@
 #include "MinesweeperView.h"
 #include "MinesweeperBoard.h"
 class GraphicController
-{
-	bool finished = false;
-	//MinesweeperView &minesweeperView;
+{	
 	MinesweeperBoard &minesweeperBoard;
 	GraphicView &graphicView;
 	sf::RenderWindow & renderWindow;
+	bool finished = false;
 
 public:
 	GraphicController();
 	GraphicController(GraphicView &graphicView, sf::RenderWindow & renderWindow, MinesweeperBoard &minesweeperBoard);
 
-	void handleEvent();
-
-	// no need to change this
-	void draw(sf::RenderWindow & win);
+	void handleEvent();	
 	bool isFinished() const;
 	void setFinishedToFalse() { finished = false; }
 

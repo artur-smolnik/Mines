@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "GameManager.h"
-#include "ScoreController.h"
+
 
 
 GameManager::GameManager(IntroController &ic , GraphicController &mc, ScoreController &sc)
@@ -25,9 +25,7 @@ void GameManager::updateState() {
 			state = INTRO;
 			scoreController.setPlayAgainToFalse();
 			introController.setFinishedToFalse();
-			graphicController.setFinishedToFalse();
-			//handleEvent();
-			//introController.handleEvent();
+			graphicController.setFinishedToFalse();			
 		}
 		if(scoreController.isFinished()) exit(0);
 		break;
@@ -37,13 +35,11 @@ void GameManager::updateState() {
 void GameManager::handleEvent()
 {
 	switch (state) {
-	case INTRO:
-		
+	case INTRO:		
 		introController.handleEvent();
 		break;
 	case GAME:
-		graphicController.handleEvent();
-		//graphicController.handleEvent(event);
+		graphicController.handleEvent();		
 		break;
 	case SCORE:
 		scoreController.handleEvent();
@@ -53,7 +49,7 @@ void GameManager::handleEvent()
 
 }
 
-void GameManager::draw(sf::RenderWindow &win) {
+void GameManager::draw() {
 	updateState();
 	switch (state) {
 	case INTRO:

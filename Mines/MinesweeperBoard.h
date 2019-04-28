@@ -46,13 +46,9 @@ public:
 	bool hasMine(int x, int y) const;
 	bool isRevealed(int x, int y) const;
 	
-	void display_mines_around(int x, int y); //additional func
+	void display_mines_around(int x, int y); //additional func for text view mode
 	void toggleFlag(int x, int y);
 	void revealField(int x, int y);	
-	std::vector<mineCords> getMinesCords();  //additional func for stage5 
-
-	
-
 	void setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode);
 	
 };

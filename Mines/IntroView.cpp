@@ -103,16 +103,6 @@ void IntroView::draw() {
 }
 
 
-void IntroView::setFillColorEasyMode()
-{
-	rect_easy_mode.setFillColor(sf::Color::Blue);
-}
-
-void IntroView::setFillColorSmallSize()
-{
-	rect_small_size.setFillColor(sf::Color::Blue);
-
-}
 
 sf::RenderWindow &IntroView::getWindow() const {
 	return renderWindow;

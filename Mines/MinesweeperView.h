@@ -7,8 +7,7 @@ class MinesweeperView {
 	GraphicView &graphicView;
 	sf::RenderWindow renderWindow;
 
-public:
-	//MinesweeperView();
+public:	
 	MinesweeperView(GraphicView &graphicView);
 
 	void draw();

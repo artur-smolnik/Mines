@@ -228,12 +228,6 @@ void MinesweeperBoard::revealField(int x, int y)
 	}
 }
 
-std::vector<MinesweeperBoard::mineCords> MinesweeperBoard::getMinesCords()
-{
-	return minesCords;
-}
-
-
 
 
 

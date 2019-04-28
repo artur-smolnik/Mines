@@ -13,11 +13,10 @@ class ScoreView {
 
 public:
 	ScoreView(sf::RenderWindow &renderWindow, MinesweeperBoard &minesweeperBoard);
-	//drawing
+	
 	void draw();
 	sf::RenderWindow &getWindow() { return renderWindow; };
-	sf::RectangleShape getRectExit() { return rect_exit; }
-	//retuning rect
+	sf::RectangleShape getRectExit() { return rect_exit; }	
 	sf::RectangleShape getRectPlayAgain() { return rect_play_again; }
 	void setIsWindowSetToFalse() { isWindowSet = false; }
 };

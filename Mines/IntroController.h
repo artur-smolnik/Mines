@@ -14,8 +14,7 @@ class IntroController {
 	bool finished = false;
 	IntroView & introView;
 	MinesweeperBoard &minesweeperBoard;
-	GraphicView &graphicView;
-	
+	GraphicView &graphicView;	
 	sSettings settings;
 	
 public:
@@ -24,8 +23,7 @@ public:
 	void handleEvent();
 	sSettings getSettings();
 
-	// no need to change this
-	void draw();
+	
 	bool isFinished() const { return finished; }	
 	void setFinishedToFalse() { finished = false; }
 	

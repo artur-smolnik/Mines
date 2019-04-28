@@ -3,7 +3,7 @@
 #include "ScoreView.h"
 
 class ScoreController {
-	//GameManager &gameManager;
+	
 	ScoreView &scoreView;
 	
 	bool finished;
@@ -12,8 +12,7 @@ class ScoreController {
 public:
 	ScoreController(ScoreView &scoreView);
 	void handleEvent();
-
-	// no need to change this
+	
 	void draw();
 	bool isFinished() const { return finished; }
 	bool playAgain()  { return again; }
