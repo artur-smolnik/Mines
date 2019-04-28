@@ -3,14 +3,21 @@
 #include "ScoreView.h"
 
 class ScoreController {
-	bool finished = false;
+	//GameManager &gameManager;
 	ScoreView &scoreView;
+	
+	bool finished;
+	bool again = false;
+
 public:
-	explicit ScoreController(ScoreView &scoreView);
-	void handleEvent(sf::Event &event);
+	ScoreController(ScoreView &scoreView);
+	void handleEvent();
 
 	// no need to change this
 	void draw();
 	bool isFinished() const { return finished; }
+	bool playAgain()  { return again; }
+	void setPlayAgainToFalse() { again = false; }
+	void setFinishedToFalse() { finished = false; }
 };
 

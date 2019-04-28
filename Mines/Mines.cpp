@@ -37,7 +37,6 @@ int main()
 	
 
 	GameManager gameManager(introController, graphicController, scoreController);
-
 		
 	while (window.isOpen())
 	{
@@ -56,7 +55,7 @@ int main()
 		window.clear();
 
 		
-		gameManager.handleEvent(event);
+		gameManager.handleEvent();
 		
 		window.display();
 		

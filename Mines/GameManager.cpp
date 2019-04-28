@@ -1,5 +1,11 @@
 #include "pch.h"
 #include "GameManager.h"
+#include "ScoreController.h"
+
+void GameManager::playAgain(bool playAgain)
+{
+	if (playAgain) state = INTRO;
+}
 GameManager::GameManager(IntroController &ic , GraphicController &mc, ScoreController &sc)
 	: introController(ic), graphicController(mc), scoreController(sc)
 {
@@ -17,23 +23,33 @@ void GameManager::updateState() {
 			state = SCORE;
 		break;
 	case SCORE:
-		// oops - tu powinniœmy jakoœ zamkn¹æ aplikacjê
+		if (scoreController.playAgain())
+		{
+			state = INTRO;
+			scoreController.setPlayAgainToFalse();
+			introController.setFinishedToFalse();
+			graphicController.setFinishedToFalse();
+			//handleEvent();
+			//introController.handleEvent();
+		}
+		if(scoreController.isFinished()) exit(0);
 		break;
 	}
 }
 
-void GameManager::handleEvent(sf::Event &event)
+void GameManager::handleEvent()
 {
 	switch (state) {
 	case INTRO:
-		introController.handleEvent(event);
+		
+		introController.handleEvent();
 		break;
 	case GAME:
 		graphicController.handleEvent();
 		//graphicController.handleEvent(event);
 		break;
 	case SCORE:
-		scoreController.handleEvent(event);
+		scoreController.handleEvent();
 		break;
 	}
 	updateState();

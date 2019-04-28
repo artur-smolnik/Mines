@@ -19,6 +19,7 @@ public:
 	// no need to change this
 	void draw(sf::RenderWindow & win);
 	bool isFinished() const;
+	void setFinishedToFalse() { finished = false; }
 
 };
 

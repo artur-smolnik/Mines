@@ -18,7 +18,7 @@ IntroController::IntroController(IntroView &introView, GraphicView &graphicView,
 	
 }
 
-void IntroController::handleEvent(sf::Event event)
+void IntroController::handleEvent()
 {		
 		
 		auto mouse_pos = sf::Mouse::getPosition(introView.getWindow()); // Mouse position relative to the window
@@ -105,13 +105,13 @@ void IntroController::handleEvent(sf::Event event)
 			}
 		}		
 		
-		if (event.type == sf::Event::MouseButtonPressed)
+		/*if (event.type == sf::Event::MouseButtonPressed)
 		{
 			if (event.mouseButton.button == sf::Mouse::Left)
 			{
 				std::cout << "the right button was pressed" << std::endl;				
 			}
-		}
+		}*/
 
 		draw();
 }

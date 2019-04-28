@@ -21,11 +21,12 @@ class IntroController {
 public:
 	IntroController(IntroView & introView, GraphicView &graphicView, MinesweeperBoard &minesweeperBoard);
 
-	void handleEvent(sf::Event event);
+	void handleEvent();
 	sSettings getSettings();
 
 	// no need to change this
 	void draw();
 	bool isFinished() const { return finished; }	
+	void setFinishedToFalse() { finished = false; }
 	
 };

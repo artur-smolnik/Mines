@@ -1,9 +1,15 @@
 #include "pch.h"
 #include "ScoreController.h"
+#include "MinesweeperBoard.h"
 
-ScoreController::ScoreController(ScoreView &scoreView) : scoreView(scoreView) {}
 
-void ScoreController::handleEvent(sf::Event &event) {
+ScoreController::ScoreController(ScoreView &scoreView) : scoreView(scoreView)
+{
+	 finished = false;
+	 //playAgain = false;
+}
+
+void ScoreController::handleEvent() {
 	scoreView.draw();
 	
 
@@ -13,7 +19,14 @@ void ScoreController::handleEvent(sf::Event &event) {
 	if (scoreView.getRectExit().getGlobalBounds().contains(translated_pos)) {
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 		{
-			exit(0);
+			finished = true;
+		}
+	}
+	if (scoreView.getRectPlayAgain().getGlobalBounds().contains(translated_pos)) {
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		{
+			again = true;
+			
 		}
 	}
 
