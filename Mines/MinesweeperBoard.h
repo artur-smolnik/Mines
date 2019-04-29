@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 struct Field
 {
@@ -7,43 +8,47 @@ struct Field
 	bool hasFlag;	
 };
 
+enum GameMode { DEBUG, EASY, NORMAL, HARD };
+enum GameState { RUNNING, FINISHED_WIN, FINISHED_LOSS };
+
 class MinesweeperBoard
 {
-	enum GameMode { DEBUG, EASY, NORMAL, HARD };
-	enum GameState { RUNNING, FINISHED_WIN, FINISHED_LOSS };
-	GameMode difficultyLevel;
-	GameState gameState;
-	int width;
-	int height;
-	Field board[100][100];
-	void setBoard();
-	void setMines(GameMode gameMode);
+	struct mineCords
+	{ 
+		int x, y;
+	};
 
-	char* info;
+	int remainingMines;
+	GameMode gameMode;
+	GameState gameState;
+	int width, height, minesAmount;
+	bool firstMove;
+	Field board[100][100];
+	std::vector<mineCords> minesCords;
+	void setMinesCords();
+	void setMinesCordsFirstMove(int x, int y);
+	void setBoard();
+	void setMines();
+	void setMinesAmount();	
 	
-	
-	
-	
-//	private
+
 public:
 	MinesweeperBoard();
-	MinesweeperBoard(int width, int height);
 	
 	int countMines(int x, int y) const;			
-	void debug_display() const;
-	void display_info(int x, int y);
-	void toggleFlag(int x, int y);
-	void revealField(int x, int y);
-
-	char* getFieldInfo(int x, int y) const;
+	int getBoardWidth() const;
+	int getBoardHeight() const;
+	int getMineCount() const;
+	GameState getGameState();
+	void setGameState(int x, int y);
+	char getFieldInfo(int x, int y) const;
 	bool hasFlag(int x, int y) const;
 	bool hasMine(int x, int y) const;
 	bool isRevealed(int x, int y) const;
 	
-
-
-	int getBoardWidth() const;
-	int getBoardHeight() const;
-	
+	void display_mines_around(int x, int y); //additional func for text view mode
+	void toggleFlag(int x, int y);
+	void revealField(int x, int y);	
+	void setWidthAndHeightAndGameMode(int width, int height, GameMode gameMode);
 	
 };

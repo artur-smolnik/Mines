@@ -24,7 +24,28 @@
     <ClInclude Include="MSBoardTextView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AdditionalFunctions.h">
+    <ClInclude Include="MSTextController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MSSFMLView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MSSFMLController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,7 +62,28 @@
     <ClCompile Include="MSBoardTextView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AdditionalFunctions.cpp">
+    <ClCompile Include="MSTextController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MSSFMLView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MSSFMLController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

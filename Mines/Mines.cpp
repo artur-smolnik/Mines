@@ -1,28 +1,53 @@
-// Mines.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//// Mines.cpp : This file contains the 'main' function. Program execution begins and ends there.
+////
 //
-
 #include "pch.h"
+
+#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 #include "MinesweeperBoard.h"
-#include <time.h> 
-#include <conio.h>
-#include "AdditionalFunctions.h"
-using namespace std;
+#include "IntroView.h"
+#include "IntroController.h"
+#include "MSSFMLController.h"
+#include "ScoreView.h"
+#include "ScoreController.h"
+#include "GameManager.h"
+
+#include "MSSFMLView.h"
+
 int main()
 {
-	//const int UP = 72, DOWN = 80, ENTER = 13, LEFT = 75, RIGHT = 77;
-
 	srand(time(NULL));
-	MinesweeperBoard minesweeperBoard(10, 10);
-	AdditionalFunctions af(minesweeperBoard);
-	//minesweeperBoard.debug_display();
-	//af.move();
-
-	char* tmp = minesweeperBoard.getFieldInfo(1,1);
-	for (int i = 0; i < 6; i++)
+	int x0 = 10, y0 = 10, columns = 4, rows = 2, size = 80, gap = 5;	
+	
+	sf::RenderWindow window(sf::VideoMode(600, 500), "SAPER");	
+	
+	IntroView introView(window);	
+	MinesweeperBoard msb;
+	MSSFMLView mSSFMLView(msb, window);
+	IntroController introController(introView, mSSFMLView, msb);
+	MSSFMLController graphicController(mSSFMLView, msb);
+	ScoreView scoreView(window, msb);
+	ScoreController scoreController(scoreView);
+	GameManager gameManager(introController, graphicController, scoreController);
+		
+	while (window.isOpen())
 	{
-		cout << *(tmp + i);
-	}
-	//check for version control
 
+		sf::Event event;		
+		
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)window.close();		
+		}		
+		
+		window.clear();
+		gameManager.handleEvent();
+		gameManager.draw();
+		window.display();		
+	}
+
+	std::cout << std::endl << "Koniec gry";
+	return EXIT_SUCCESS;
 }

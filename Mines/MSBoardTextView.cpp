@@ -3,16 +3,40 @@
 #include "MSBoardTextView.h"
 #include <iostream>
 
+using namespace std;
 
-MSBoardTextView::MSBoardTextView(MinesweeperBoard msb)
+MSBoardTextView::MSBoardTextView(MinesweeperBoard &msb)
+:minesweeperBoard(msb){}
+
+
+void MSBoardTextView::display(int x, int y) const
 {
-	this->minesweeperBoard = msb;
-}
+	
+	for (int i = 0; i < minesweeperBoard.getBoardHeight(); i++)
+	{
+		for (int j = 0; j < minesweeperBoard.getBoardWidth(); j++)
+		{
+			if (j == x && i == y)
+			{
+				cout << "{";
+			}
+			else
+			{
+				cout << "[";
+			}
+			cout << minesweeperBoard.getFieldInfo(j, i);
+			if (j == x && i == y)
+			{
+				cout << "}";
+			}
+			else
+			{
+				cout << "]";
+			}
+		}
+		cout << endl;
+	}
 
-
-void MSBoardTextView::display() const
-{
-	minesweeperBoard.debug_display();	
 }
 
 
