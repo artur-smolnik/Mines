@@ -1,4 +1,4 @@
-#include "pch.h"
+//#include "pch.h"
 #include "MSSFMLController.h"
 
 MSSFMLController::MSSFMLController(MSSFMLView &mSSFMLView, MinesweeperBoard &minesweeperBoard)

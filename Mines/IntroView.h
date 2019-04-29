@@ -26,7 +26,7 @@ class IntroView {
 	sf::Text txt_big_size;
 	sf::RenderWindow &renderWindow;
 	std::vector<sf::RectangleShape> rectangles;	
-	
+	sf::Text identities;
 public:
 	IntroView(sf::RenderWindow &renderWindow);
 	std::vector<sf::RectangleShape> &getRectangles();
