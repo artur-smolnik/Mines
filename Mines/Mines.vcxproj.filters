@@ -80,10 +80,10 @@
     <ClCompile Include="ScoreView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicView.cpp">
+    <ClCompile Include="MSSFMLView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicController.cpp">
+    <ClCompile Include="MSSFMLController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -11,8 +11,7 @@
 MSSFMLView::MSSFMLView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	:msb(msb),
 	renderWindow(renderWindow)
-{
-	//gameMode = DEBUG;
+{	
 	x0 = 25;
 	y0 = 25;	
 	size = 40;
@@ -27,23 +26,7 @@ void MSSFMLView::setWidthAndHeightAndGameMode(int width, int height, GameMode ga
 	rectangles.clear();
 	setWindowSize();
 	loadTextures();
-	setRectanglesVector();
-	/*columns = width;
-	rows = height;
-	if (gameMode != DEBUG)
-	{
-		this->gameMode = gameMode;
-		setWindowSize();
-		rectangles.clear();
-		setRectanglesVector();
-	}
-	else
-	{
-		this->gameMode = gameMode;
-		setWindowSize();
-		loadTextures();
-		setRectanglesVector();
-	}*/
+	setRectanglesVector();	
 	
 }
 
