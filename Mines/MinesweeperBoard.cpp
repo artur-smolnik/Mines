@@ -25,7 +25,9 @@ void MinesweeperBoard::setWidthAndHeightAndGameMode(int width, int height, GameM
 	minesCords.clear();
 	this->width = width;
 	this->height = height;
+	//this->gameMode = DEBUG;
 	this->gameMode = gameMode;
+
 	setBoard();
 	setMinesAmount();
 	setMinesCords();
