@@ -1,4 +1,4 @@
-//#include "pch.h"
+#include "pch.h"
 #include "MSTextController.h"
 #include "conio.h"
 #include <iostream>

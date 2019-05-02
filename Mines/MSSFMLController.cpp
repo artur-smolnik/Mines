@@ -1,5 +1,7 @@
-//#include "pch.h"
+#include "pch.h"
 #include "MSSFMLController.h"
+#include <Windows.h>
+#include "SFML/Graphics.hpp"
 
 MSSFMLController::MSSFMLController(MSSFMLView &mSSFMLView, MinesweeperBoard &minesweeperBoard)
 	:mSSFMLView(mSSFMLView),
@@ -37,8 +39,28 @@ void MSSFMLController::handleEvent()
 
 bool MSSFMLController::isFinished() const 
 {
-	if (minesweeperBoard.getGameState() != RUNNING) return true;
+	if (minesweeperBoard.getGameState() != RUNNING)
+	{
+		sf::Text tmp_text;
+		sf::Font font;
+		if (!font.loadFromFile("arial.ttf")) {
+			abort();
+		}		
+		tmp_text.setFont(font);
+		tmp_text.setFillColor(sf::Color::Red);
+		tmp_text.setString("GAME OVER");
+		tmp_text.setPosition(mSSFMLView.getWindow().getSize().x/2-130, mSSFMLView.getWindow().getSize().y/2);
+		tmp_text.setCharacterSize(50);
+		tmp_text.setOutlineThickness(4);
+		tmp_text.setOutlineColor(sf::Color::Blue);
+		mSSFMLView.draw();
+		mSSFMLView.getWindow().draw(tmp_text);
+		mSSFMLView.getWindow().display();
+		Sleep(5000);
+		return true;
+	}
 	else return false;
+	
 }
 
 

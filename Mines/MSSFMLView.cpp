@@ -1,4 +1,4 @@
-//#include "pch.h"
+#include "pch.h"
 #include "SFML/Graphics.hpp"
 #include "MSSFMLView.h"
 #include <iostream>

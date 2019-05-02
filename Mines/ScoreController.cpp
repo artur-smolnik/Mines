@@ -1,4 +1,4 @@
-//#include "pch.h"
+#include "pch.h"
 #include "ScoreController.h"
 #include "MinesweeperBoard.h"
 

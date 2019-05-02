@@ -1,5 +1,6 @@
-//#include "pch.h"
+#include "pch.h"
 #include "GameManager.h"
+#include <Windows.h>
 
 
 
@@ -17,7 +18,11 @@ void GameManager::updateState() {
 		break;
 	case GAME:
 		if (graphicController.isFinished())
-			state = SCORE;
+		{
+			state = SCORE;			
+		}
+
+			
 		break;
 	case SCORE:
 		if (scoreController.playAgain())
