@@ -1,4 +1,4 @@
-#include "pch.h"
+//#include "pch.h"
 #include "IntroView.h"
 #include <cstdlib> 
 
@@ -8,7 +8,7 @@ IntroView::IntroView(sf::RenderWindow &renderWindow) : renderWindow(renderWindow
 	if (!font.loadFromFile("arial.ttf")) {
 		abort();
 	}
-	
+
 	rect.setSize(sf::Vector2f(100, 100));
 	rect.setPosition(100, 100);
 	txt_play.setFont(font);
@@ -21,8 +21,8 @@ IntroView::IntroView(sf::RenderWindow &renderWindow) : renderWindow(renderWindow
 	txt.setString("SAPER");
 	txt.setPosition(300, 20);
 	txt.setOutlineThickness(4);
-	txt.setOutlineColor(sf::Color::Magenta);
-	txt.setFillColor(sf::Color::Cyan);
+	txt.setOutlineColor(sf::Color::Blue);
+	txt.setFillColor(sf::Color::Green);
 	txt.setCharacterSize(50);
 
 	rect_easy_mode.setSize(sf::Vector2f(100, 50));
@@ -73,6 +73,13 @@ IntroView::IntroView(sf::RenderWindow &renderWindow) : renderWindow(renderWindow
 	txt_big_size.setFillColor(sf::Color::Red);
 	txt_big_size.setCharacterSize(20);
 
+	identities.setFont(font);
+	identities.setString("Artur Smolnik 249092");
+	identities.setPosition(100, 450);
+	identities.setFillColor(sf::Color::Red);
+	identities.setCharacterSize(15);
+
+
 	rectangles.push_back(rect);
 	rectangles.push_back(rect_easy_mode);
 	rectangles.push_back(rect_normal_mode);
@@ -81,10 +88,11 @@ IntroView::IntroView(sf::RenderWindow &renderWindow) : renderWindow(renderWindow
 	rectangles.push_back(rect_normal_size);
 	rectangles.push_back(rect_big_size);
 
-	
+
 }
 
 void IntroView::draw() {
+	renderWindow.draw(identities);
 	renderWindow.draw(rect);
 	renderWindow.draw(txt_play);
 	renderWindow.draw(txt);
@@ -109,7 +117,7 @@ sf::RenderWindow &IntroView::getWindow() const {
 }
 
 
- sf::RectangleShape &IntroView::getRect()  {
+sf::RectangleShape &IntroView::getRect() {
 	return rect;
 }
 
@@ -118,26 +126,26 @@ std::vector<sf::RectangleShape> &IntroView::getRectangles()
 	return rectangles;
 }
 
- sf::RectangleShape &IntroView::getRect_easy_mode()  {
+sf::RectangleShape &IntroView::getRect_easy_mode() {
 	return rect_easy_mode;
 }
 
- sf::RectangleShape &IntroView::getRect_normal_mode()  {
+sf::RectangleShape &IntroView::getRect_normal_mode() {
 	return rect_normal_mode;
 }
 
- sf::RectangleShape &IntroView::getRect_hard_mode()  {
+sf::RectangleShape &IntroView::getRect_hard_mode() {
 	return rect_hard_mode;
 }
 
- sf::RectangleShape &IntroView::getRect_small_size()  {
+sf::RectangleShape &IntroView::getRect_small_size() {
 	return rect_small_size;
 }
 
- sf::RectangleShape &IntroView::getRect_normal_size()  {
+sf::RectangleShape &IntroView::getRect_normal_size() {
 	return rect_normal_size;
 }
 
- sf::RectangleShape &IntroView::getRect_big_size()  {
+sf::RectangleShape &IntroView::getRect_big_size() {
 	return rect_big_size;
 }
