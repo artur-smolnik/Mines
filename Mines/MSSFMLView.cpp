@@ -92,7 +92,8 @@ void MSSFMLView::display()
 		}
 		else if (msb.getFieldInfo(i % columns, divresult.quot) == ' ')
 		{
-			rectangles[i].setTexture(&texture_0);
+			//rectangles[i].setTexture(&texture_0);
+			rectangles[i].setFillColor(sf::Color::Green);
 		}
 		else if (msb.getFieldInfo(i % columns, divresult.quot) == '1')
 		{

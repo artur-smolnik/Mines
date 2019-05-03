@@ -56,7 +56,7 @@ bool MSSFMLController::isFinished() const
 		mSSFMLView.draw();
 		mSSFMLView.getWindow().draw(tmp_text);
 		mSSFMLView.getWindow().display();
-		Sleep(3000);
+		Sleep(1000);
 		return true;		
 	}
 	else return false;

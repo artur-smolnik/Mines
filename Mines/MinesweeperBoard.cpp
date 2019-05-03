@@ -239,8 +239,8 @@ void MinesweeperBoard::revealSurroundingFields(int x, int y)
 	
 	std::vector<int> indexesOfCheckedFileds;
 	std::vector<mineCords> fieldsToBeRevealed;
-	int maxAmountOfMinesToReveal = rand() % height * width * 0.1;
-	int probabilityOfRevealingFields = rand() % 3;
+	int maxAmountOfMinesToReveal = rand() % height * width * 0.008;
+	int probabilityOfRevealingFields = rand() % 2;
 	int counter = 0;
 
 	if (!(probabilityOfRevealingFields == 0)) return;
@@ -286,8 +286,12 @@ void MinesweeperBoard::revealSurroundingFields(int x, int y)
 				for (int j = -1; j <= 1; j++) 
 				{
 					if (i == 0 && j == 0) continue;
+					/*if (i == -1 && j == 0) continue;
+					if (i == 0 && j == 1) continue;
+					if (i == 1 && j == 0) continue;
+					if (i == 0 && j == -1) continue;*/
 					if (fieldsToBeRevealed[counter].x + j < 0 || fieldsToBeRevealed[counter].x + j >= width || fieldsToBeRevealed[counter].y + i < 0 || fieldsToBeRevealed[counter].y + i >= height) continue;
-					if (!board[fieldsToBeRevealed[counter].x + j][fieldsToBeRevealed[counter].y + i].hasMine)
+					if (!board[fieldsToBeRevealed[counter].x + j][fieldsToBeRevealed[counter].y + i].hasMine && !board[fieldsToBeRevealed[counter].x + j][fieldsToBeRevealed[counter].y + i].hasFlag)
 					{
 						mineCords tmp;
 						tmp.x = fieldsToBeRevealed[counter].x + j;
@@ -313,6 +317,55 @@ void MinesweeperBoard::revealSurroundingFields(int x, int y)
 		{
 			board[fieldsToBeRevealed[i].x][fieldsToBeRevealed[i].y].isRevealed = true;
 		}
+
+		/*for (int z = 0; z< fieldsToBeRevealed.size(); z++)
+		{
+			if (getFieldInfo(fieldsToBeRevealed[z].x, fieldsToBeRevealed[z].y) == ' ')
+			{
+
+				for (int i = -1; i <= 1; i++)
+				{
+					for (int j = -1; j <= 1; j++)
+					{
+						if (i == 0 && j == 0) continue;
+						if (fieldsToBeRevealed[z].x + j < 0 || fieldsToBeRevealed[z].x + j >= width || fieldsToBeRevealed[z].y + i < 0 || fieldsToBeRevealed[z].y + i >= height) continue;
+						if (!board[fieldsToBeRevealed[z].x + j][fieldsToBeRevealed[z].y + i].hasMine && !board[fieldsToBeRevealed[z].x + j][fieldsToBeRevealed[z].y + i].hasFlag)
+						{
+							mineCords tmp;
+							tmp.x = fieldsToBeRevealed[z].x + j;
+							tmp.y = fieldsToBeRevealed[z].y + i;
+
+							board[tmp.x][tmp.y].isRevealed = true;
+
+						}
+					}
+				}
+
+
+
+			}
+		}*/
+		for (int y = 0; y < 15; y++)
+		{
+
+			for (int i = 0; i < height; i++)
+			{
+				for (int j = 0; j < width; j++)
+				{
+					if ((j < 0 || j >= width || i < 0 || i>= height)) continue;
+					for (int n = -1; n <= 1; ++n)
+					{
+						for (int m = -1; m <= 1; ++m)
+						{
+							//if (n == 0 && m == 0) continue;
+							if (board[j + m][i + n].isRevealed && getFieldInfo(j + m, i + n) == ' ') board[j][i].isRevealed = true;
+						}
+					}
+
+				}
+			}
+		}
+		
 
 		fieldsToBeRevealed.clear();
 }
