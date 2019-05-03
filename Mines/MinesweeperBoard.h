@@ -36,6 +36,7 @@ class MinesweeperBoard
 	void setBoard();
 	void setMines();
 	void setMinesAmount();	
+	void revealSurroundingFields(int x, int y);
 	
 
 public:

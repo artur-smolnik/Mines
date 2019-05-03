@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include "MinesweeperBoard.h"
+#include <algorithm>
 
 
 #ifndef MINESBOARD_H__  // in other classes im using #pragma once because it's generated automatically in visual studio 
@@ -26,7 +27,7 @@ void MinesweeperBoard::setWidthAndHeightAndGameMode(int width, int height, GameM
 	this->width = width;
 	this->height = height;
 	//this->gameMode = DEBUG;
-	this->gameMode = gameMode;
+	this->gameMode = DEBUG;
 
 	setBoard();
 	setMinesAmount();
@@ -218,15 +219,80 @@ void MinesweeperBoard::revealField(int x, int y)
 	{
 		setMinesCordsFirstMove(x, y);
 		firstMove = false;
+		
 		board[x][y].isRevealed = true;
+		revealSurroundingFields(x, y);
+
 	}
-	else
+	else 
 	{
 		board[x][y].isRevealed = true;
+		revealSurroundingFields(x, y);
+
 		firstMove = false;
+
 	}
 }
+void MinesweeperBoard::revealSurroundingFields(int x, int y)
+{
+	//std::vector<vector<mineCords>> vectorsOfFieldsToBeRevealed;
+	std::vector<mineCords> fieldsToBeRevealed;
+					
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				if (i == 0 && j == 0) continue;
+				if (x + j < 0 || x + j >= width || y + i < 0 || y + i >= height) continue;
+				if (!board[x + j][y + i].hasMine)
+				{
+					mineCords tmp;
+					tmp.x = x+j;
+					tmp.y = y+i;
+					fieldsToBeRevealed.push_back(tmp);
+				}
+			}
+		}
+		int counter = 0;
+		
+		do
+		{			
+			for (int i = -1; i <= 1; i++)
+			{
+				for (int j = -1; j <= 1; j++) 
+				{
+					if (i == 0 && j == 0) continue;
+					if (fieldsToBeRevealed[counter].x + j < 0 || fieldsToBeRevealed[counter].x + j >= width || fieldsToBeRevealed[counter].y + i < 0 || fieldsToBeRevealed[counter].y + i >= height) continue;
+					if (!board[fieldsToBeRevealed[counter].x + j][fieldsToBeRevealed[counter].y + i].hasMine)
+					{
+						mineCords tmp;
+						tmp.x = x + j;
+						tmp.y = y + i;
+						
+						
+						
+						bool find = true;
 
+						for(int i = 0; i < fieldsToBeRevealed.size();i++)
+						{
+							if (tmp.x == fieldsToBeRevealed[i].x && tmp.y == fieldsToBeRevealed[i].y) find = false;							
+						}
+
+						if (find) fieldsToBeRevealed.push_back(tmp);
+						
+						
+					}
+				}
+			}
+			if(counter < fieldsToBeRevealed.size()-1)counter++;
+			else break;
+		} while (fieldsToBeRevealed.size() < 100);
+
+		for (int i = 0; i < fieldsToBeRevealed.size(); i++)
+		{
+			board[fieldsToBeRevealed[i].x][fieldsToBeRevealed[i].y].isRevealed = true;
+		}
+
+		fieldsToBeRevealed.clear();
+}
 
 
 

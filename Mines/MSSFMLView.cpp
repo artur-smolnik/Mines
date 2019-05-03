@@ -13,7 +13,7 @@ MSSFMLView::MSSFMLView(MinesweeperBoard &msb, sf::RenderWindow &renderWindow)
 	renderWindow(renderWindow)
 {	
 	x0 = 25;
-	y0 = 25;	
+	y0 = 60;	
 	size = 40;
 	gap = 4;
 }
