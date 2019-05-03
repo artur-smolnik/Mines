@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "MinesweeperBoard.h"
 #include <algorithm>
+#include <cstdlib>
 
 
 #ifndef MINESBOARD_H__  // in other classes im using #pragma once because it's generated automatically in visual studio 
@@ -27,7 +28,7 @@ void MinesweeperBoard::setWidthAndHeightAndGameMode(int width, int height, GameM
 	this->width = width;
 	this->height = height;
 	//this->gameMode = DEBUG;
-	this->gameMode = DEBUG;
+	this->gameMode = gameMode;
 
 	setBoard();
 	setMinesAmount();
@@ -235,8 +236,17 @@ void MinesweeperBoard::revealField(int x, int y)
 }
 void MinesweeperBoard::revealSurroundingFields(int x, int y)
 {
-	//std::vector<vector<mineCords>> vectorsOfFieldsToBeRevealed;
+	
+	std::vector<int> indexesOfCheckedFileds;
 	std::vector<mineCords> fieldsToBeRevealed;
+	int maxAmountOfMinesToReveal = rand() % height * width * 0.1;
+	int probabilityOfRevealingFields = rand() % 3;
+	int counter = 0;
+
+	if (!(probabilityOfRevealingFields == 0)) return;
+
+
+	
 					
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
@@ -251,10 +261,26 @@ void MinesweeperBoard::revealSurroundingFields(int x, int y)
 				}
 			}
 		}
-		int counter = 0;
+		
 		
 		do
 		{			
+			bool check = true;
+			do
+			{			
+				
+				counter = rand() % fieldsToBeRevealed.size();
+				std::vector<int>::iterator it = std::find(indexesOfCheckedFileds.begin(), indexesOfCheckedFileds.end(), counter);
+
+				if (it != indexesOfCheckedFileds.end()) continue;
+				else
+				{
+					check = false;
+					indexesOfCheckedFileds.push_back(counter);
+				}
+				
+			} while (check);
+			
 			for (int i = -1; i <= 1; i++)
 			{
 				for (int j = -1; j <= 1; j++) 
@@ -264,10 +290,8 @@ void MinesweeperBoard::revealSurroundingFields(int x, int y)
 					if (!board[fieldsToBeRevealed[counter].x + j][fieldsToBeRevealed[counter].y + i].hasMine)
 					{
 						mineCords tmp;
-						tmp.x = x + j;
-						tmp.y = y + i;
-						
-						
+						tmp.x = fieldsToBeRevealed[counter].x + j;
+						tmp.y = fieldsToBeRevealed[counter].y + i;						
 						
 						bool find = true;
 
@@ -278,13 +302,12 @@ void MinesweeperBoard::revealSurroundingFields(int x, int y)
 
 						if (find) fieldsToBeRevealed.push_back(tmp);
 						
-						
 					}
 				}
 			}
 			if(counter < fieldsToBeRevealed.size()-1)counter++;
 			else break;
-		} while (fieldsToBeRevealed.size() < 100);
+		} while (fieldsToBeRevealed.size() < maxAmountOfMinesToReveal);
 
 		for (int i = 0; i < fieldsToBeRevealed.size(); i++)
 		{
