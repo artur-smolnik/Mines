@@ -243,7 +243,7 @@ void MinesweeperBoard::revealSurroundingFields(int x, int y)
 	int probabilityOfRevealingFields = rand() % 2;
 	int counter = 0;
 
-	if (!(probabilityOfRevealingFields == 0)) return;
+	//if (!(probabilityOfRevealingFields == 0)) return;
 
 
 	
@@ -262,7 +262,7 @@ void MinesweeperBoard::revealSurroundingFields(int x, int y)
 			}
 		}
 		
-		
+		if(fieldsToBeRevealed.size()==8){
 		do
 		{			
 			bool check = true;
@@ -318,33 +318,7 @@ void MinesweeperBoard::revealSurroundingFields(int x, int y)
 			board[fieldsToBeRevealed[i].x][fieldsToBeRevealed[i].y].isRevealed = true;
 		}
 
-		/*for (int z = 0; z< fieldsToBeRevealed.size(); z++)
-		{
-			if (getFieldInfo(fieldsToBeRevealed[z].x, fieldsToBeRevealed[z].y) == ' ')
-			{
-
-				for (int i = -1; i <= 1; i++)
-				{
-					for (int j = -1; j <= 1; j++)
-					{
-						if (i == 0 && j == 0) continue;
-						if (fieldsToBeRevealed[z].x + j < 0 || fieldsToBeRevealed[z].x + j >= width || fieldsToBeRevealed[z].y + i < 0 || fieldsToBeRevealed[z].y + i >= height) continue;
-						if (!board[fieldsToBeRevealed[z].x + j][fieldsToBeRevealed[z].y + i].hasMine && !board[fieldsToBeRevealed[z].x + j][fieldsToBeRevealed[z].y + i].hasFlag)
-						{
-							mineCords tmp;
-							tmp.x = fieldsToBeRevealed[z].x + j;
-							tmp.y = fieldsToBeRevealed[z].y + i;
-
-							board[tmp.x][tmp.y].isRevealed = true;
-
-						}
-					}
-				}
-
-
-
-			}
-		}*/
+		}
 		for (int y = 0; y < 15; y++)
 		{
 
